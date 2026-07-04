@@ -1,10 +1,10 @@
-# 🎵 Spotify FAQ Chatbot (RAG Local)
+# Spotify FAQ Chatbot (RAG Local)
 
 Este é um chatbot inteligente de FAQ projetado para responder a dúvidas de usuários do Spotify sobre pagamentos, cobranças e funcionalidades do plano Premium. O sistema utiliza a técnica de **RAG (Retrieval-Augmented Generation)** com modelos de IA executados de forma **100% local**, garantindo custo zero e independência de APIs pagas.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 * **Interface de Chat Amigável:** Tela construída em Streamlit com histórico de conversa, campo de pergunta e indicador de carregamento.
 * **Busca Semântica Avançada:** Utilização de banco vetorial para encontrar os trechos mais relevantes do FAQ com base no contexto da pergunta.
@@ -14,7 +14,7 @@ Este é um chatbot inteligente de FAQ projetado para responder a dúvidas de usu
 
 ---
 
-## 🏗️ Arquitetura & Pipeline do Sistema
+## Arquitetura & Pipeline do Sistema
 
 O fluxo da informação segue o pipeline padrão de RAG:
 1. O usuário envia uma pergunta pela interface (Streamlit).
@@ -26,7 +26,7 @@ O fluxo da informação segue o pipeline padrão de RAG:
 
 ---
 
-## 🛠️ Stack Tecnológica
+## Stack Tecnológica
 
 * **Backend:** Python 3.10+ & FastAPI
 * **Frontend:** Streamlit
@@ -36,7 +36,7 @@ O fluxo da informação segue o pipeline padrão de RAG:
 
 ---
 
-## 📦 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 spotify-faq-chatbot/
