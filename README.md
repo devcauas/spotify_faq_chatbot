@@ -39,15 +39,36 @@ O fluxo da informação segue o pipeline padrão de RAG:
 ## Estrutura do Projeto
 
 ```text
-spotify-faq-chatbot/
-├── data/                  # Pasta para armazenar os PDFs e Markdowns do FAQ
+spotify_faq_chatbot/
+│
+├── data/
+│   └── faq_documents/       # Arquivos de FAQ (txt, pdf, etc)
+│
 ├── src/
 │   ├── backend/
-│   │   ├── main.py        # API FastAPI
-│   │   └── rag_engine.py  # Lógica de indexação e busca do LangChain
+│   │   ├── __init__.py
+│   │   ├── api/              # Endpoints FastAPI
+│   │   │   ├── __init__.py
+│   │   │   └── routes.py
+│   │   ├── core/             # Lógica principal
+│   │   │   ├── __init__.py
+│   │   │   ├── rag_engine.py # RAG Engine
+│   │   │   ├── vector_store.py
+│   │   │   └── config.py
+│   │   ├── models/           # Pydantic models
+│   │   │   ├── __init__.py
+│   │   │   └── schemas.py
+│   │   └── main.py           # Entry point FastAPI
+│   │
 │   └── frontend/
-│       └── app.py         # Interface Streamlit
-├── Dockerfile
+│       ├── __init__.py
+│       ├── app.py
+│       └── components/       # Componentes Streamlit
+│           ├── __init__.py
+│           └── chat_ui.py
+│
 ├── docker-compose.yml
+├── Dockerfile.backend
+├── Dockerfile.frontend
 ├── requirements.txt
 └── README.md
