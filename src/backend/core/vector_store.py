@@ -9,6 +9,7 @@ Este módulo encapsula toda a lógica de:
 Data: 06/07/2026
 """
 
+import os
 import logging
 from typing import List, Dict, Any, Optional
 from pathlib import Path
@@ -18,6 +19,9 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_core.documents import Document
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuração de logging
 logging.basicConfig(level=logging.INFO)
@@ -150,6 +154,8 @@ class VectorStoreManager:
             Se já existir um vector store no diretório, ele será sobrescrito.
         """
         logger.info("Criando vector store...")
+
+        os.environ["ANONYMIZED_TELEMETRY"] = "False"
         
         # Cria o vector store
         self.vector_store = Chroma.from_documents(

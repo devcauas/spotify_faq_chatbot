@@ -1,0 +1,14 @@
+# requirements.lock - Versões testadas e compatíveis
+langchain==0.1.0
+langchain-community==0.1.0
+chromadb==0.4.22
+sentence-transformers==2.2.2
+huggingface-hub==0.19.4
+transformers==4.35.0
+torch==2.0.1
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+streamlit==1.29.0
+pydantic==2.5.0
+python-dotenv==1.0.0
+requests==2.31.0
