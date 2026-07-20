@@ -1,0 +1,44 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Ambiente virtual
+venv/
+env/
+ENV/
+.venv
+
+# Dados (grandes e gerados)
+data/chroma_db/
+data/test_chroma_*/
+reports/*.json
+
+# Arquivos de log
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente
+.env.local
+.env.*.local
+
+# Ollama
+ollama/
