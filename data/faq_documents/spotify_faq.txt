@@ -1,41 +1,55 @@
+# === PLAYLISTS ===
 Como criar uma playlist no Spotify?
-
 Para criar uma playlist no Spotify, siga estes passos:
 1. Clique em "Sua Biblioteca" no menu lateral
 2. Clique no botão "+" (Criar Playlist)
 3. Dê um nome para sua playlist
 4. Comece a adicionar músicas arrastando ou usando o menu de três pontos
 
-Você também pode criar playlists colaborativas, onde amigos podem adicionar músicas.
+Como adicionar músicas a uma playlist existente?
+Para adicionar músicas a uma playlist:
+1. Encontre a música que deseja adicionar
+2. Clique nos três pontos (...) ao lado da música
+3. Selecione "Adicionar à playlist"
+4. Escolha a playlist desejada
 
----
+Como excluir uma playlist?
+Para excluir uma playlist:
+1. Vá até a playlist que deseja excluir
+2. Clique nos três pontos (...) no canto superior direito
+3. Selecione "Excluir playlist"
+4. Confirme a exclusão
 
-Como compartilhar uma música ou playlist?
-
+# === COMPARTILHAMENTO ===
+Como compartilhar uma música?
 Para compartilhar uma música:
 1. Clique nos três pontos (...) ao lado da música
 2. Selecione "Compartilhar"
 3. Escolha a plataforma (WhatsApp, Instagram, Copiar Link, etc)
 
+Como compartilhar uma playlist?
 Para compartilhar uma playlist:
 1. Vá até a playlist
 2. Clique nos três pontos (...) no canto superior direito
 3. Selecione "Compartilhar"
 4. Escolha a plataforma desejada
 
----
-
+# === SPOTIFY PREMIUM ===
 O que é o Spotify Premium?
-
 Spotify Premium é a versão paga do Spotify que oferece:
 - Música sem anúncios
 - Pular músicas ilimitadamente
 - Modo offline (baixar músicas)
 - Qualidade de áudio superior
-- Pular faixas livremente
 
-Preços (valores podem variar):
+Preços do Spotify Premium:
 - Individual: R$ 19,90/mês
 - Duo: R$ 24,90/mês
 - Família: R$ 34,90/mês
 - Universitário: R$ 9,90/mês
+
+Vantagens do Spotify Premium:
+1. Sem anúncios - ouça música sem interrupções
+2. Downloads - ouça offline onde quiser
+3. Pulos ilimitados - pule quantas músicas quiser
+4. Qualidade superior - até 320kbps

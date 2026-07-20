@@ -188,23 +188,38 @@ class VectorStoreManager:
         logger.warning(f"Vector store não encontrado em {self.persist_directory}")
         return None
     
-    def search(self, query: str, k: int = 3) -> List[Document]:
+    def search(self, query: str, k: int = 3, deduplicate: bool = True) -> List[Document]:
         """
         Busca documentos similares a uma query.
         
         Args:
             query: Texto para busca
             k: Número de resultados
-            
-        Returns:
-            Lista de documentos similares
+            deduplicate: Remove duplicatas (True por padrão)
         """
         if not self.vector_store:
             raise ValueError("Vector store não inicializado. Use create_vector_store() ou load_vector_store()")
         
-        results = self.vector_store.similarity_search(query, k=k)
-        logger.info(f"Encontrados {len(results)} resultados para: {query[:50]}...")
+        # Busca com mais resultados para compensar duplicatas
+        search_k = k * 2 if deduplicate else k
+        results = self.vector_store.similarity_search(query, k=search_k)
         
+        if deduplicate:
+            # Remove duplicatas mantendo a ordem
+            seen = set()
+            unique_results = []
+            for doc in results:
+                # Usa o conteúdo como chave para deduplicação
+                content_hash = hash(doc.page_content)
+                if content_hash not in seen:
+                    seen.add(content_hash)
+                    unique_results.append(doc)
+                    if len(unique_results) == k:
+                        break
+            
+            results = unique_results
+        
+        logger.info(f"Encontrados {len(results)} resultados para: {query[:50]}...")
         return results
     
     def reset(self) -> None:
