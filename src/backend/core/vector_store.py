@@ -51,8 +51,8 @@ class VectorStoreManager:
         self,
         persist_directory: str = "data/chroma_db",
         embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
-        chunk_size: int = 500,
-        chunk_overlap: int = 50
+        chunk_size: int = 100,
+        chunk_overlap: int = 10
     ):
         """
         Inicializa o gerenciador do vector store.

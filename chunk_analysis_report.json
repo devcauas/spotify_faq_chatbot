@@ -1,0 +1,206 @@
+{
+  "test_queries": [
+    "Como criar uma playlist?",
+    "Como compartilhar música?",
+    "O que é Spotify Premium?",
+    "Quanto custa o Spotify Premium?"
+  ],
+  "configurations": [
+    {
+      "chunk_size": 100,
+      "chunk_overlap": 10,
+      "num_chunks": 18,
+      "avg_similarity": 0.7876911897827248,
+      "query_results": [
+        {
+          "query": "Como criar uma playlist?",
+          "similarity": 0.7556631009187975,
+          "chunk_text": "Como criar uma playlist no Spotify?"
+        },
+        {
+          "query": "Como compartilhar música?",
+          "similarity": 0.6983954433596921,
+          "chunk_text": "---\n\nComo compartilhar uma música ou playlist?"
+        },
+        {
+          "query": "O que é Spotify Premium?",
+          "similarity": 0.9401831363636781,
+          "chunk_text": "---\n\nO que é o Spotify Premium?"
+        },
+        {
+          "query": "Quanto custa o Spotify Premium?",
+          "similarity": 0.7565230784887318,
+          "chunk_text": "---\n\nO que é o Spotify Premium?"
+        }
+      ]
+    },
+    {
+      "chunk_size": 200,
+      "chunk_overlap": 20,
+      "num_chunks": 9,
+      "avg_similarity": 0.775567877947809,
+      "query_results": [
+        {
+          "query": "Como criar uma playlist?",
+          "similarity": 0.7556631009187975,
+          "chunk_text": "Como criar uma playlist no Spotify?"
+        },
+        {
+          "query": "Como compartilhar música?",
+          "similarity": 0.6499021960200287,
+          "chunk_text": "Para compartilhar uma música:\n1. Clique nos três pontos (...) ao lado da música\n2. Selecione \"Compar"
+        },
+        {
+          "query": "O que é Spotify Premium?",
+          "similarity": 0.9401831363636781,
+          "chunk_text": "---\n\nO que é o Spotify Premium?"
+        },
+        {
+          "query": "Quanto custa o Spotify Premium?",
+          "similarity": 0.7565230784887318,
+          "chunk_text": "---\n\nO que é o Spotify Premium?"
+        }
+      ]
+    },
+    {
+      "chunk_size": 300,
+      "chunk_overlap": 30,
+      "num_chunks": 6,
+      "avg_similarity": 0.6997774631830422,
+      "query_results": [
+        {
+          "query": "Como criar uma playlist?",
+          "similarity": 0.6761895141322767,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "Como compartilhar música?",
+          "similarity": 0.6499022434258158,
+          "chunk_text": "Para compartilhar uma música:\n1. Clique nos três pontos (...) ao lado da música\n2. Selecione \"Compar"
+        },
+        {
+          "query": "O que é Spotify Premium?",
+          "similarity": 0.7802713422163421,
+          "chunk_text": "O que é o Spotify Premium?\n\nSpotify Premium é a versão paga do Spotify que oferece:\n- Música sem anú"
+        },
+        {
+          "query": "Quanto custa o Spotify Premium?",
+          "similarity": 0.6927467529577342,
+          "chunk_text": "O que é o Spotify Premium?\n\nSpotify Premium é a versão paga do Spotify que oferece:\n- Música sem anú"
+        }
+      ]
+    },
+    {
+      "chunk_size": 500,
+      "chunk_overlap": 50,
+      "num_chunks": 3,
+      "avg_similarity": 0.676492610001372,
+      "query_results": [
+        {
+          "query": "Como criar uma playlist?",
+          "similarity": 0.681222763915604,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "Como compartilhar música?",
+          "similarity": 0.5858639215749506,
+          "chunk_text": "---\n\nComo compartilhar uma música ou playlist?\n\nPara compartilhar uma música:\n1. Clique nos três pon"
+        },
+        {
+          "query": "O que é Spotify Premium?",
+          "similarity": 0.7532783468760504,
+          "chunk_text": "---\n\nO que é o Spotify Premium?\n\nSpotify Premium é a versão paga do Spotify que oferece:\n- Música se"
+        },
+        {
+          "query": "Quanto custa o Spotify Premium?",
+          "similarity": 0.6856054076388827,
+          "chunk_text": "---\n\nO que é o Spotify Premium?\n\nSpotify Premium é a versão paga do Spotify que oferece:\n- Música se"
+        }
+      ]
+    },
+    {
+      "chunk_size": 800,
+      "chunk_overlap": 80,
+      "num_chunks": 2,
+      "avg_similarity": 0.6439216165607691,
+      "query_results": [
+        {
+          "query": "Como criar uma playlist?",
+          "similarity": 0.6227906723311517,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "Como compartilhar música?",
+          "similarity": 0.5140120441577312,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "O que é Spotify Premium?",
+          "similarity": 0.7532783383602827,
+          "chunk_text": "---\n\nO que é o Spotify Premium?\n\nSpotify Premium é a versão paga do Spotify que oferece:\n- Música se"
+        },
+        {
+          "query": "Quanto custa o Spotify Premium?",
+          "similarity": 0.6856054113939107,
+          "chunk_text": "---\n\nO que é o Spotify Premium?\n\nSpotify Premium é a versão paga do Spotify que oferece:\n- Música se"
+        }
+      ]
+    },
+    {
+      "chunk_size": 1000,
+      "chunk_overlap": 100,
+      "num_chunks": 2,
+      "avg_similarity": 0.5466432494498334,
+      "query_results": [
+        {
+          "query": "Como criar uma playlist?",
+          "similarity": 0.6227906723311517,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "Como compartilhar música?",
+          "similarity": 0.5140120441577312,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "O que é Spotify Premium?",
+          "similarity": 0.533300332717638,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        },
+        {
+          "query": "Quanto custa o Spotify Premium?",
+          "similarity": 0.5164699485928131,
+          "chunk_text": "Como criar uma playlist no Spotify?\n\nPara criar uma playlist no Spotify, siga estes passos:\n1. Cliqu"
+        }
+      ]
+    }
+  ],
+  "best_configuration": {
+    "chunk_size": 100,
+    "chunk_overlap": 10,
+    "num_chunks": 18,
+    "avg_similarity": 0.7876911897827248,
+    "query_results": [
+      {
+        "query": "Como criar uma playlist?",
+        "similarity": 0.7556631009187975,
+        "chunk_text": "Como criar uma playlist no Spotify?"
+      },
+      {
+        "query": "Como compartilhar música?",
+        "similarity": 0.6983954433596921,
+        "chunk_text": "---\n\nComo compartilhar uma música ou playlist?"
+      },
+      {
+        "query": "O que é Spotify Premium?",
+        "similarity": 0.9401831363636781,
+        "chunk_text": "---\n\nO que é o Spotify Premium?"
+      },
+      {
+        "query": "Quanto custa o Spotify Premium?",
+        "similarity": 0.7565230784887318,
+        "chunk_text": "---\n\nO que é o Spotify Premium?"
+      }
+    ]
+  }
+}
