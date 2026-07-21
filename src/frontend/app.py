@@ -20,7 +20,7 @@ from src.frontend.components.sidebar import render_sidebar
 # ============================================
 
 st.set_page_config(
-    page_title="🎵 Spotify FAQ Chatbot",
+    page_title="Spotify FAQ Chatbot",
     page_icon="🎵",
     layout="wide",
     initial_sidebar_state="expanded"

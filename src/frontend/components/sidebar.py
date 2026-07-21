@@ -19,10 +19,6 @@ def render_sidebar(api_client) -> Dict:
         Dicionário com configurações
     """
     with st.sidebar:
-        st.image(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/512px-Spotify_logo_without_text.svg.png",
-            width=80
-        )
         st.title("🎵 Spotify FAQ")
         st.markdown("---")
         
