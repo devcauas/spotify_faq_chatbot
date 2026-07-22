@@ -28,8 +28,8 @@ class VectorStoreManager:
         self,
         persist_directory: str = "data/chroma_db",
         embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
-        chunk_size: int = 100,
-        chunk_overlap: int = 10,
+        chunk_size: int = 700,
+        chunk_overlap: int = 70,
         reset_on_init: bool = False
     ):
         self.persist_directory = persist_directory
@@ -48,7 +48,15 @@ class VectorStoreManager:
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             length_function=len,
-            separators=["\n\n", "\n", ". ", " ", ""]
+            separators=[
+                "\n==================================================\n",
+                "\n# ",
+                "\n## ",
+                "\n\n",
+                "\n",
+                ". ",
+                " "
+            ]
         )
         
         # ✅ Vector Store via LangChain
@@ -90,8 +98,23 @@ class VectorStoreManager:
         chunks = self.text_splitter.split_documents(documents)
         
         for i, chunk in enumerate(chunks):
-            chunk.metadata["chunk_id"] = i
-            chunk.metadata["source"] = chunk.metadata.get("source", "unknown")
+            texto = chunk.page_content.split("\n")
+
+            titulo = texto[0].strip() if texto else ""
+
+            url = ""
+
+            for linha in texto:
+                if linha.startswith("http"):
+                    url = linha.strip()
+                    break
+
+            chunk.metadata = {
+                "chunk_id": i,
+                "title": titulo,
+                "url": url,
+                "source": chunk.metadata.get("source", "")
+            }
         
         logger.info(f"Divididos {len(documents)} documentos em {len(chunks)} chunks")
         return chunks
