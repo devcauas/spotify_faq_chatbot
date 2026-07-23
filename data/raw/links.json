@@ -2,46 +2,55 @@
   {
     "title": "Atualizações de preço",
     "url": "https://support.spotify.com/br-pt/article/price-updates/",
-    "slug": "price-updates"
+    "slug": "price-updates",
+    "category": "payment-help"
   },
   {
     "title": "Ajuda com pagamento não efetuado",
     "url": "https://support.spotify.com/br-pt/article/failed-payment/",
-    "slug": "failed-payment"
+    "slug": "failed-payment",
+    "category": "payment-help"
   },
   {
     "title": "Formas de pagamento aceitas",
     "url": "https://support.spotify.com/br-pt/article/payment-methods/",
-    "slug": "payment-methods"
+    "slug": "payment-methods",
+    "category": "payment-help"
   },
   {
     "title": "Como mudar seus detalhes de pagamento",
     "url": "https://support.spotify.com/br-pt/article/change-payment-details/",
-    "slug": "change-payment-details"
+    "slug": "change-payment-details",
+    "category": "payment-help"
   },
   {
     "title": "Cartões pré-pagos do Spotify",
     "url": "https://support.spotify.com/br-pt/article/gift-cards/",
-    "slug": "gift-cards"
+    "slug": "gift-cards",
+    "category": "payment-help"
   },
   {
     "title": "Como cancelar um plano Premium",
     "url": "https://support.spotify.com/br-pt/article/cancel-premium/",
-    "slug": "cancel-premium"
+    "slug": "cancel-premium",
+    "category": "payment-help"
   },
   {
     "title": "Pagamentos para o plano Duo",
     "url": "https://support.spotify.com/br-pt/article/payments-duo-plan/",
-    "slug": "payments-duo-plan"
+    "slug": "payments-duo-plan",
+    "category": "payment-help"
   },
   {
     "title": "Pagamentos pelo plano Família",
     "url": "https://support.spotify.com/br-pt/article/payments-for-family-plan/",
-    "slug": "payments-for-family-plan"
+    "slug": "payments-for-family-plan",
+    "category": "payment-help"
   },
   {
     "title": "Atenção a possíveis golpes envolvendo o Spotify",
     "url": "https://support.spotify.com/br-pt/article/supposed-financial-incentives/",
-    "slug": "supposed-financial-incentives"
+    "slug": "supposed-financial-incentives",
+    "category": "payment-help"
   }
 ]

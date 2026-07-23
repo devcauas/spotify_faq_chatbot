@@ -1,6 +1,6 @@
 # scripts/scraper/save_markdown.py
 """
-Salva um artigo já limpo como .md, com metadata (title/url) em frontmatter.
+Salva um artigo já limpo como .md, com metadata (title/url/category) em frontmatter.
 """
 
 from pathlib import Path
@@ -15,6 +15,7 @@ def save_article_as_markdown(article: dict, slug: str) -> Path:
         "---\n"
         f"title: {article['title']}\n"
         f"url: {article['url']}\n"
+        f"category: {article.get('category', '')}\n"
         "---\n\n"
     )
     body = f"# {article['title']}\n\n{article['content']}\n"

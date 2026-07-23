@@ -30,7 +30,12 @@ def download_and_process():
                 page.wait_for_timeout(3000)
                 html = page.content()
 
-                data = clean_html(html, url=url, fallback_title=artigo["title"])
+                data = clean_html(
+                    html,
+                    url=url,
+                    fallback_title=artigo["title"],
+                    category=artigo.get("category", ""),
+                )
                 if not data["content"]:
                     print(f"  ⚠️ sem conteúdo, pulando: {url}")
                     continue

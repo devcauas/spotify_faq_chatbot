@@ -87,17 +87,7 @@ if "messages" not in st.session_state:
         "role": "assistant",
         "content": """👋 Olá! Sou o assistente do Spotify.
 
-Posso ajudar com perguntas sobre:
-- 🎵 Como criar playlists
-- 💰 Spotify Premium e preços
-- 🔗 Compartilhar músicas e playlists
-- 📱 Funcionalidades do app
-
 **O que você gostaria de saber?**""",
-        "sources": [],
-        "similarity": 1.0,
-        "response_time": 0,
-        "fallback": False
     }]
 
 # ============================================
