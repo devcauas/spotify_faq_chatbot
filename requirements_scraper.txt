@@ -1,0 +1,16 @@
+# Dependências usadas SOMENTE pelo pipeline de scraping offline
+# (scripts/scraper/*.py), rodado localmente antes do deploy.
+#
+# Propositalmente separado de requirements.txt: nem Dockerfile.backend
+# nem Dockerfile.frontend instalam este arquivo. Colocar playwright nas
+# imagens de deploy adicionaria ~300-400MB do binário do Chromium para
+# um código que nunca roda em produção (o próprio Dockerfile.backend já
+# assume "scraping é etapa offline, feita antes do deploy" e copia o
+# chroma_db pronto).
+#
+# Uso local:
+#   pip install -r requirements_scraper.txt
+#   playwright install chromium   <- passo extra, sem isso p.chromium.launch() falha
+
+beautifulsoup4==4.12.3
+playwright==1.45.0

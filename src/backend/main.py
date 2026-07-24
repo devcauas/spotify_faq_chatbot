@@ -5,7 +5,8 @@ import logging
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from typing import Optional
 
 from src.backend.core.rag_engine import RAGEngine
 
@@ -21,6 +22,10 @@ async def lifespan(app: FastAPI):
 
     logger.info("Inicializando RAG Engine...")
 
+    # Se o vector store não existir/estiver vazio, VectorStoreManager agora
+    # levanta exceção aqui (strict=True), e o uvicorn falha o startup com
+    # uma mensagem clara em vez de subir "saudável" e quebrar só na
+    # primeira pergunta do usuário.
     rag_engine = RAGEngine()
 
     logger.info("RAG Engine inicializado.")
@@ -48,6 +53,12 @@ app.add_middleware(
 
 class ChatRequest(BaseModel):
     question: str
+    # Antes esse campo não existia: o slider "top_k" da sidebar no
+    # Streamlit nunca chegava a lugar nenhum, e o RAGEngine sempre usava
+    # o top_k fixo definido no __init__. Agora é opcional (None mantém o
+    # comportamento padrão do engine) e validado para não deixar o
+    # usuário mandar um valor absurdo (ex: top_k=500).
+    top_k: Optional[int] = Field(default=None, ge=1, le=10)
 
 
 class ChatResponse(BaseModel):
@@ -93,7 +104,7 @@ def chat(request: ChatRequest):
             detail="RAG Engine não inicializado"
         )
 
-    result = rag_engine.ask(request.question)
+    result = rag_engine.ask(request.question, top_k=request.top_k)
 
     return ChatResponse(
         answer=result["answer"],

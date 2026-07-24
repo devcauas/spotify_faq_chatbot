@@ -15,6 +15,7 @@ Principais mudanças em relação à versão anterior:
 """
 
 from typing import Dict, List, Optional, Any
+import os
 import time
 import logging
 
@@ -33,17 +34,6 @@ class RAGEngine:
     Motor RAG completo usando LangChain
     """
 
-    _FALLBACK_SENTENCE = (
-        "Não encontrei essa informação nos documentos oficiais do Spotify. "
-        "Por favor, reformule sua pergunta ou entre em contato com o suporte."
-    )
-
-    def _strip_trailing_fallback(self, answer: str) -> str:
-        idx = answer.find(self._FALLBACK_SENTENCE)
-        if idx > 80:  # só corta se veio DEPOIS de conteúdo real
-            return answer[:idx].strip()
-        return answer.strip()
-
     def __init__(
         self,
         model_name: str = "llama3.2",
@@ -57,11 +47,25 @@ class RAGEngine:
         self.verbose = verbose
 
         logger.info("Inicializando Vector Store...")
+        # VectorStoreManager já carrega o vector store existente no seu
+        # próprio __init__ (reset_on_init=False por padrão), então chamar
+        # load_vector_store() de novo aqui era redundante. Além disso,
+        # load_vector_store agora é strict por padrão: se o banco não
+        # existir ou estiver vazio, falha aqui com uma mensagem clara,
+        # em vez de deixar o FastAPI subir "saudável" e só quebrar na
+        # primeira pergunta do usuário.
         self.vector_store = VectorStoreManager()
 
         logger.info(f"Inicializando LLM com modelo {model_name}...")
+        # Em Docker Compose, "localhost" dentro do container do backend NÃO
+        # é o container do Ollama — cada serviço tem sua própria rede
+        # loopback. Por isso a URL vem de uma env var (setada no
+        # docker-compose.yml como http://ollama:11434), com fallback para
+        # localhost:11434 para quem roda tudo fora de container (dev local).
+        ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
         self.llm = OllamaLLM(
             model=model_name,
+            base_url=ollama_base_url,
             temperature=temperature,
             num_predict=500,
             top_k=10,
@@ -91,25 +95,32 @@ class RAGEngine:
             'num_sources': 0
         }
 
-    def ask(self, question: str) -> Dict[str, Any]:
+    def ask(self, question: str, top_k: Optional[int] = None) -> Dict[str, Any]:
         """
         Processa uma pergunta e retorna resposta + fontes.
 
+        Args:
+            question: pergunta do usuário.
+            top_k: sobrescreve, só para esta chamada, o número de chunks
+                buscados (ex: vindo do slider da sidebar no Streamlit).
+                Se None, usa o self.top_k definido no __init__.
+
         Fluxo:
-        1. Busca top_k*3 candidatos (mais do que precisa) já com score real.
+        1. Busca os top_k chunks mais similares, com score real (distância).
         2. Converte distância -> similaridade (1 - distância, espaço cosseno).
-        3. Filtra pelo threshold, corta no máx. 2 chunks por artigo (diversidade),
-           e mantém só os top_k finais.
-        4. Se nada sobrar, fallback SEM chamar o LLM.
-        5. Caso contrário, monta o contexto e gera a resposta com o Llama.
+        3. Se a maior similaridade encontrada for menor que o threshold,
+           retorna fallback SEM chamar o LLM (mais rápido e mais confiável
+           do que depender do modelo se autopoliciar).
+        4. Caso contrário, monta o contexto e gera a resposta com o Llama.
         """
         start_time = time.time()
+        k = top_k or self.top_k
 
         try:
             logger.info(f"Processando pergunta: {question[:50]}...")
 
             raw_results = self.vector_store.vector_store.similarity_search_with_score(
-                question, k=self.top_k * 3
+                question, k=k
             )
 
             # Chroma retorna DISTÂNCIA (quanto menor, mais similar).
@@ -117,50 +128,26 @@ class RAGEngine:
             # normalizados, a similaridade real é 1 - distância.
             docs_with_sim = [(doc, 1 - dist) for doc, dist in raw_results]
 
-            # Filtra pelo threshold antes de aplicar o cap de diversidade
-            docs_with_sim = [d for d in docs_with_sim if d[1] >= self.similarity_threshold]
+            max_similarity = max((sim for _, sim in docs_with_sim), default=0.0)
 
-            if not docs_with_sim:
+            if not docs_with_sim or max_similarity < self.similarity_threshold:
                 logger.info(
-                    f"Nenhum chunk acima do threshold {self.similarity_threshold} — "
-                    "fallback sem chamar o LLM."
+                    f"Similaridade máxima {max_similarity:.2f} abaixo do "
+                    f"threshold {self.similarity_threshold} — fallback sem chamar o LLM."
                 )
                 return self._fallback_result(time.time() - start_time)
-
-            # Limita no máx. 2 chunks por fonte (artigo), preservando ordem por similaridade,
-            # para evitar que um único artigo domine todo o contexto enviado ao LLM.
-            from collections import defaultdict
-            capped, seen_count = [], defaultdict(int)
-            for doc, sim in sorted(docs_with_sim, key=lambda x: -x[1]):
-                src = doc.metadata.get('source')
-                if seen_count[src] >= 2:
-                    continue
-                seen_count[src] += 1
-                capped.append((doc, sim))
-                if len(capped) >= self.top_k:
-                    break
-            docs_with_sim = capped
-
-            max_similarity = max(sim for _, sim in docs_with_sim)
 
             context = "\n\n".join(doc.page_content for doc, _ in docs_with_sim)
             prompt = self.prompt_template.format(context=context, question=question)
 
             answer = self.llm.invoke(prompt)
 
-            answer = self._strip_trailing_fallback(answer)
-
             is_fallback = self._is_fallback_response(answer)
             response_time = time.time() - start_time
 
-            # Dedup de fontes, preservando ordem (mesmo artigo pode ter entrado
-            # 2x na lista de chunks, mas só deve aparecer 1x na citação final).
-            sources_raw = [doc.metadata.get('source', 'FAQ') for doc, _ in docs_with_sim]
-            sources = list(dict.fromkeys(sources_raw))
-
             return {
                 'answer': answer,
-                'sources': sources,
+                'sources': [doc.metadata.get('source', 'FAQ') for doc, _ in docs_with_sim],
                 'source_contents': [doc.page_content for doc, _ in docs_with_sim],
                 'similarity': max_similarity,
                 'response_time': response_time,
@@ -181,19 +168,16 @@ class RAGEngine:
             }
 
     def _is_fallback_response(self, answer: str) -> bool:
-        """
-        Só considera fallback se a frase canônica de recusa DOMINAR a resposta
-        (ou seja, o modelo não respondeu nada de fato) — não quando ela aparece
-        colada ao final de uma resposta que já contém conteúdo substancial.
-        """
-        canonical = "não encontrei essa informação nos documentos oficiais do spotify"
-        answer_lower = answer.lower().strip()
-        if canonical not in answer_lower:
-            return False
-        # Se a frase canônica representa a maior parte do texto, é fallback de verdade.
-        # Se veio DEPOIS de bastante conteúdo, o modelo só "hedgeou" no final.
-        idx = answer_lower.find(canonical)
-        return idx < 80  # a recusa apareceu logo no início = fallback real
+        """Verifica se a resposta é um fallback (segunda camada de segurança)"""
+        fallback_indicators = [
+            "não encontrei",
+            "não tenho informações",
+            "não sei",
+            "não está nos documentos",
+            "não encontrado"
+        ]
+        answer_lower = answer.lower()
+        return any(indicator in answer_lower for indicator in fallback_indicators)
 
     def get_stats(self) -> Dict:
         """Retorna estatísticas do sistema"""

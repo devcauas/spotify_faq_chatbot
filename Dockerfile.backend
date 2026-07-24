@@ -1,0 +1,44 @@
+# Dockerfile.backend
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Dependências de sistema necessárias para compilar/rodar sentence-transformers/torch
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instala dependências Python primeiro (aproveita cache do Docker entre builds)
+COPY requirements-backend.txt requirements.txt
+
+# torch puro do PyPI vem com binários CUDA (facilmente 2GB+), inúteis aqui
+# já que o vector_store.py roda embeddings em CPU (device='cpu'). Instalar
+# via o índice cpu-only do PyTorch evita estourar limites de tamanho de
+# imagem em free tiers do Render/Railway/Fly.
+RUN pip install --no-cache-dir torch==2.3.1 --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r requirements.txt
+
+# Baixa o modelo de embeddings durante o BUILD, não no runtime.
+# Isso evita: (1) cold start lento na primeira pergunta, (2) falha se o
+# container não tiver internet em produção (ex: Render/Railway restrito).
+RUN python -c "from sentence_transformers import SentenceTransformer; \
+    SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
+
+# Código da aplicação
+COPY src/backend ./src/backend
+COPY src/__init__.py ./src/__init__.py
+
+# Base de conhecimento já processada (scraping é etapa offline, feita antes do deploy).
+# O chroma_db já vem pronto dentro da imagem — não é gerado no container.
+COPY data/faq_documents ./data/faq_documents
+COPY scripts/scraper/config.py scripts/scraper/build_vector_db.py ./scripts/scraper/
+RUN python scripts/scraper/build_vector_db.py
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+CMD ["uvicorn", "src.backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

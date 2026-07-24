@@ -1,0 +1,27 @@
+# Dockerfile.frontend
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# python:3.11-slim não vem com curl por padrão. Sem essa linha, o
+# HEALTHCHECK abaixo falha sempre com "curl: not found", e plataformas
+# como Render/Railway podem marcar o serviço como unhealthy e reiniciá-lo
+# em loop mesmo com o Streamlit funcionando normalmente.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-frontend.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY src/frontend ./src/frontend
+COPY src/__init__.py ./src/__init__.py
+
+EXPOSE 8501
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+
+CMD ["streamlit", "run", "src/frontend/app.py", \
+     "--server.port=8501", "--server.address=0.0.0.0"]

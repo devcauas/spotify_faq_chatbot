@@ -131,14 +131,27 @@ class VectorStoreManager:
             collection_metadata={"hnsw:space": "cosine"}
         )
 
-        self.vector_store.persist()
+        # NOTA: a partir do chromadb 0.4.x/0.5.x, o Chroma.from_documents(...,
+        # persist_directory=...) já grava tudo em disco automaticamente.
+        # O método self.vector_store.persist() foi removido do client interno
+        # do Chroma nessa versão e chamá-lo aqui gera AttributeError,
+        # quebrando o build_vector_db.py bem no passo "Salvando no ChromaDB".
         logger.info(f"Vector store salvo em {self.persist_directory}")
 
         return self.vector_store
 
-    def load_vector_store(self) -> Optional[Chroma]:
+    def load_vector_store(self, strict: bool = True) -> Optional[Chroma]:
         """
-        Carrega vector store existente
+        Carrega vector store existente.
+
+        Args:
+            strict: se True (padrão), levanta FileNotFoundError quando o
+                banco não existir em disco, em vez de só logar um warning
+                e deixar self.vector_store = None. Isso evita que o
+                RAGEngine/FastAPI subam "com sucesso" mas quebrem de forma
+                confusa na primeira pergunta, com o vector store vazio.
+                Use strict=False só em cenários onde None é esperado
+                (ex: primeira execução antes de build_vector_db.py).
         """
         if Path(self.persist_directory).exists():
             logger.info(f"Carregando vector store de {self.persist_directory}")
@@ -146,9 +159,30 @@ class VectorStoreManager:
                 persist_directory=self.persist_directory,
                 embedding_function=self.embeddings
             )
+
+            # Diretório pode existir mas estar vazio (ex: reset() sem rebuild).
+            count = self.vector_store._collection.count()
+            if count == 0:
+                msg = (
+                    f"Vector store em {self.persist_directory} existe mas está "
+                    "vazio (0 documentos). Rode build_vector_db.py antes de "
+                    "iniciar a API."
+                )
+                if strict:
+                    raise RuntimeError(msg)
+                logger.warning(msg)
+
             return self.vector_store
 
-        logger.warning(f"Vector store não encontrado em {self.persist_directory}")
+        msg = (
+            f"Vector store não encontrado em {self.persist_directory}. "
+            "Rode 'python scripts/scraper/build_vector_db.py' antes de "
+            "iniciar a API."
+        )
+        if strict:
+            raise FileNotFoundError(msg)
+
+        logger.warning(msg)
         return None
 
     def search(self, query: str, k: int = 3) -> List[Document]:
