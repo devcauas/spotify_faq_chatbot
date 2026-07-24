@@ -190,7 +190,7 @@ ollama list
 
 # Construção da Base Vetorial - 
 
-###ATENÇÃO! Executar os passos 1 ao 3 na primeira vez que rodar o projeto e se existir novos arquivos para a extração. Caso prefira executar esses passos exclua a pasta "data".
+### ATENÇÃO! Executar os passos 1 ao 3 na primeira vez que rodar o projeto e se existir novos arquivos para a extração. Caso prefira executar esses passos exclua a pasta "data".
 
 ## 1. Extrair os links das FAQs
 
