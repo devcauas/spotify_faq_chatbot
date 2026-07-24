@@ -121,7 +121,10 @@ spotify_faq_chatbot
 ├── Dockerfile.backend
 ├── Dockerfile.frontend
 ├── docker-compose.yml
+├── requirements-backend.txt
+├── requirements-frontend.txt
 ├── requirements.txt
+├── requirements_scraper.txt
 └── README.md
 ```
 
