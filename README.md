@@ -91,9 +91,10 @@ spotify_faq_chatbot
 │   │   ├── save_markdows.py
 │   │   └── config.py
 │   │
-│   ├── analyze_chunks.py
-│   ├── inspect_vector_store.py
-│   └── test_search.py
+│   └── tests/
+│       ├── analyze_chunks.py
+│       ├── inspect_vector_store.py
+│       └── test_search.py
 │
 ├── src/
 │   ├── backend/
