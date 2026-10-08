@@ -52,7 +52,7 @@ Todo o processamento ocorre localmente, sem utilização de APIs pagas.
 
 ## Backend
 
-- Python 3.10
+- Python 3.11
 - FastAPI
 - LangChain
 - ChromaDB
@@ -88,7 +88,7 @@ spotify_faq_chatbot
 │   │   ├── download_articles.py
 │   │   ├── build_vector_db.py
 │   │   ├── clean_article.py
-│   │   ├── save_markdows.py
+│   │   ├── save_markdown.py
 │   │   └── config.py
 │   │
 │   └── tests/
@@ -127,7 +127,77 @@ spotify_faq_chatbot
 
 ---
 
-# Como executar
+# Executando com Docker (recomendado)
+
+Esta é a forma mais simples de rodar o projeto: o Docker Compose sobe o Ollama, baixa o modelo, constrói a base vetorial e inicia a API e a interface, sem precisar instalar Python ou Ollama na máquina.
+
+## Pré-requisitos
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) em execução
+- Cerca de 15 GB livres em disco (imagens + modelo llama3.2)
+- Pelo menos 6 GB de RAM disponíveis para o Docker
+
+> **Windows (WSL 2):** por padrão o Docker pode ficar com pouca memória. Para aumentar, crie o arquivo `C:\Users\<seu-usuario>\.wslconfig` com:
+>
+> ```ini
+> [wsl2]
+> memory=8GB
+> ```
+>
+> Depois execute `wsl --shutdown` e reinicie o Docker Desktop.
+
+## 1. Clone o projeto e suba os containers
+
+```bash
+git clone https://github.com/SEU-USUARIO/spotify_faq_chatbot.git
+
+cd spotify_faq_chatbot
+
+docker compose up --build
+```
+
+Na primeira execução o processo é mais demorado, pois as imagens são construídas e o modelo llama3.2 (~2 GB) é baixado. Os serviços sobem nesta ordem:
+
+| Serviço | Função |
+|---|---|
+| `ollama` | Servidor do Ollama que executa o Llama 3.2 |
+| `ollama-pull` | Baixa o modelo llama3.2 e encerra (o modelo fica salvo no volume `ollama_data`) |
+| `backend` | API FastAPI com o motor RAG; a base vetorial é construída durante o build da imagem |
+| `frontend` | Interface Streamlit |
+
+## 2. Acesse a aplicação
+
+- Interface: http://localhost:8501
+- API: http://localhost:8000
+- Documentação Swagger: http://localhost:8000/docs
+
+> A primeira pergunta pode demorar alguns minutos, pois o modelo é carregado na memória. As perguntas seguintes são mais rápidas. Como o Ollama roda em CPU, cada resposta leva em média de 20 a 60 segundos, dependendo da máquina.
+
+## Comandos úteis
+
+```bash
+# Subir em segundo plano
+docker compose up -d
+
+# Acompanhar os logs
+docker compose logs -f backend
+
+# Parar os containers
+docker compose down
+
+# Parar e apagar também o modelo baixado (volume ollama_data)
+docker compose down -v
+```
+
+Se os documentos em `data/faq_documents/` forem alterados, reconstrua a imagem do backend para recriar a base vetorial:
+
+```bash
+docker compose up --build backend
+```
+
+---
+
+# Executando localmente (sem Docker)
 
 ## 1. Clone o projeto
 
@@ -185,9 +255,16 @@ ollama list
 
 ---
 
-# Construção da Base Vetorial - 
+# Construção da Base Vetorial
 
-### ATENÇÃO! Executar os passos 1 ao 3 na primeira vez que rodar o projeto e se existir novos arquivos para a extração. Caso prefira executar esses passos exclua a pasta "data".
+> **Atenção:** os artigos já coletados estão versionados em `data/faq_documents/`, então os passos 1 e 2 só são necessários para atualizar ou ampliar a base de conhecimento. O passo 3 é **obrigatório** na primeira execução local, pois o banco vetorial (`data/chroma_db/`) não é versionado.
+
+Os scripts de scraping usam dependências próprias, que não fazem parte do `requirements.txt`:
+
+```bash
+pip install -r requirements_scraper.txt
+playwright install chromium
+```
 
 ## 1. Extrair os links das FAQs
 
@@ -237,7 +314,7 @@ data/chroma_db/
 ## 4. Testar a busca semântica
 
 ```bash
-python scripts/test_search.py
+python scripts/tests/test_search.py
 ```
 
 Este script verifica se o ChromaDB está recuperando corretamente os documentos mais relevantes para perguntas de teste.
@@ -358,24 +435,23 @@ Todo o conhecimento utilizado pelo modelo provém exclusivamente dos documentos 
 ### Pergunta
 
 ```text
-Como criar uma playlist?
+Como cancelar meu Premium?
 ```
 
 ### Resposta
 
 ```text
-Para criar uma playlist no Spotify:
-
-1. Abra o aplicativo do Spotify.
-2. Clique em "Sua Biblioteca".
-3. Selecione "Criar Playlist".
-4. Informe um nome para a playlist.
-5. Adicione músicas pesquisando artistas, álbuns ou faixas.
+Para cancelar seu plano Premium, acesse Gerenciar seu plano e selecione
+Cancelar assinatura. Sua conta continuará no Premium até a próxima data de
+cobrança. Depois disso, ela passará para a versão grátis. Você não vai perder
+suas playlists e músicas salvas quando passar para o Free. Você ainda vai poder
+entrar e curtir seu som, mas com anúncios.
 
 Fonte:
-Criar e editar playlists
-https://support.spotify.com/
+https://support.spotify.com/br-pt/article/cancel-premium/
 ```
+
+> A base de conhecimento atual cobre a categoria **Pagamentos** da Central de Ajuda (planos, formas de pagamento, cancelamento, cartões-presente, reajustes de preço etc.). Perguntas fora desse escopo recebem uma resposta de fallback informando que a informação não foi encontrada.
 
 ---
 
@@ -403,7 +479,7 @@ https://support.spotify.com/
 - Avaliação automática do RAG com Ragas
 - Observabilidade utilizando LangSmith
 - Testes unitários e de integração
-- Deploy completo utilizando Docker Compose
+- Suporte a GPU no Docker Compose para acelerar o Ollama
 
 ---
 
