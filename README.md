@@ -101,10 +101,7 @@ spotify_faq_chatbot
 │   │   ├── core/
 │   │   │   ├── rag_engine.py
 │   │   │   ├── vector_store.py
-│   │   │   ├── prompts.py
-│   │   │   ├── config.py
-│   │   │   ├── metrics.py
-│   │   │   └── error_handling.py
+│   │   │   └── prompts.py
 │   │   │
 │   │   └── main.py
 │   │

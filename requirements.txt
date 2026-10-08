@@ -1,0 +1,4 @@
+# Instala tudo o que é necessário para rodar o projeto localmente (sem Docker).
+# O scraping usa dependências próprias: veja requirements_scraper.txt.
+-r requirements-backend.txt
+-r requirements-frontend.txt
