@@ -17,6 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src/frontend ./src/frontend
 COPY src/__init__.py ./src/__init__.py
+# Tema (cores e fonte) lido pelo Streamlit a partir do diretório de trabalho
+COPY .streamlit ./.streamlit
 
 EXPOSE 8501
 

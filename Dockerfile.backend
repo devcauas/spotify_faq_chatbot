@@ -24,7 +24,7 @@ RUN pip install --no-cache-dir torch==2.3.1 --index-url https://download.pytorch
 # Isso evita: (1) cold start lento na primeira pergunta, (2) falha se o
 # container não tiver internet em produção (ex: Render/Railway restrito).
 RUN python -c "from sentence_transformers import SentenceTransformer; \
-    SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
+    SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')"
 
 # Código da aplicação
 COPY src/backend ./src/backend

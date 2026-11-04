@@ -23,7 +23,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_ollama import OllamaLLM
 
 from .vector_store import VectorStoreManager
-from .prompts import RAG_PROMPT_TEMPLATE
+from .prompts import RAG_PROMPT_TEMPLATE, REFUSAL_SENTENCE
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -37,13 +37,22 @@ class RAGEngine:
     def __init__(
         self,
         model_name: str = "llama3.2",
-        temperature: float = 0.3,
-        top_k: int = 5,
+        temperature: float = 0.1,
+        top_k: int = 4,
         similarity_threshold: float = 0.4,
+        # Só entram no contexto os chunks a no máximo esta distância do
+        # melhor resultado. Antes, todos os top_k iam sempre, mesmo os de
+        # artigos sem relação, e o modelo misturava os assuntos.
+        relevance_margin: float = 0.12,
+        max_articles: int = 2,
+        max_article_chars: int = 2500,
         verbose: bool = False
     ):
         self.top_k = top_k
         self.similarity_threshold = similarity_threshold
+        self.relevance_margin = relevance_margin
+        self.max_articles = max_articles
+        self.max_article_chars = max_article_chars
         self.verbose = verbose
 
         logger.info("Inicializando Vector Store...")
@@ -67,7 +76,7 @@ class RAGEngine:
             model=model_name,
             base_url=ollama_base_url,
             temperature=temperature,
-            num_predict=500,
+            num_predict=300,
             top_k=10,
             top_p=0.9
         )
@@ -82,12 +91,9 @@ class RAGEngine:
 
     def _fallback_result(self, response_time: float) -> Dict[str, Any]:
         return {
-            'answer': (
-                "Não encontrei essa informação nos documentos oficiais do "
-                "Spotify. Por favor, reformule sua pergunta ou entre em "
-                "contato com o suporte."
-            ),
+            'answer': REFUSAL_SENTENCE,
             'sources': [],
+            'source_titles': [],
             'source_contents': [],
             'similarity': 0.0,
             'response_time': response_time,
@@ -137,29 +143,50 @@ class RAGEngine:
                 )
                 return self._fallback_result(time.time() - start_time)
 
-            context = "\n\n".join(doc.page_content for doc, _ in docs_with_sim)
+            # Os chunks servem para ACHAR o artigo; para responder, o modelo
+            # recebe o artigo inteiro. Com fragmentos soltos de 3 artigos, o
+            # Llama 3.2 misturava o fim de um com o começo de outro e perdia
+            # os passos (ex: "Gerenciar seu plano > Cancelar assinatura").
+            # Artigos com o mesmo título (ex: "Plano Família" geral e o de
+            # iOS) ocupariam as duas vagas com quase o mesmo texto; a segunda
+            # vaga fica para um artigo diferente.
+            sources, source_titles = [], []
+            for doc, sim in docs_with_sim:
+                url = doc.metadata.get('source', 'FAQ')
+                title = doc.metadata.get('title', url)
+                if (sim >= max_similarity - self.relevance_margin
+                        and url not in sources and title not in source_titles):
+                    sources.append(url)
+                    source_titles.append(title)
+            sources = sources[:self.max_articles]
+            source_titles = source_titles[:self.max_articles]
+
+            source_contents = [self._full_article(url) for url in sources]
+            context = "\n\n---\n\n".join(source_contents)
             prompt = self.prompt_template.format(context=context, question=question)
 
-            answer = self.llm.invoke(prompt)
+            answer = self._strip_refusal(self.llm.invoke(prompt).strip())
 
             is_fallback = self._is_fallback_response(answer)
             response_time = time.time() - start_time
 
             return {
                 'answer': answer,
-                'sources': [doc.metadata.get('source', 'FAQ') for doc, _ in docs_with_sim],
-                'source_contents': [doc.page_content for doc, _ in docs_with_sim],
+                'sources': sources,
+                'source_titles': source_titles,
+                'source_contents': source_contents,
                 'similarity': max_similarity,
                 'response_time': response_time,
                 'is_fallback': is_fallback,
-                'num_sources': len(docs_with_sim)
+                'num_sources': len(sources)
             }
 
         except Exception as e:
             logger.error(f"Erro ao processar pergunta: {e}")
             return {
-                'answer': f"❌ Erro ao processar pergunta: {str(e)}",
+                'answer': f"Erro ao processar pergunta: {str(e)}",
                 'sources': [],
+                'source_titles': [],
                 'source_contents': [],
                 'similarity': 0.0,
                 'response_time': time.time() - start_time,
@@ -167,8 +194,56 @@ class RAGEngine:
                 'error': str(e)
             }
 
+    def _full_article(self, url: str) -> str:
+        """
+        Remonta o artigo a partir dos seus chunks no Chroma, na ordem
+        original, tirando o título repetido em cada chunk e o overlap do
+        text splitter.
+        """
+        data = self.vector_store.vector_store.get(
+            where={"source": url}, include=["documents", "metadatas"]
+        )
+        chunks = sorted(
+            zip(data["documents"], data["metadatas"]),
+            key=lambda item: item[1].get("chunk_id", 0)
+        )
+        if not chunks:
+            return ""
+
+        title = chunks[0][1].get("title", "")
+        prefix = f"# {title}\n"
+        texto = ""
+        for content, _ in chunks:
+            # O 1º chunk já traz o título do próprio .md; os outros, o que o
+            # VectorStoreManager acrescentou
+            while content.lstrip().startswith(prefix):
+                content = content.lstrip()[len(prefix):]
+            # O fim do chunk anterior se repete no começo deste (overlap)
+            for n in range(min(len(texto), len(content), 80), 10, -1):
+                if texto.endswith(content[:n]):
+                    content = content[n:]
+                    break
+            texto += ("" if not texto or content[:1].isspace() else "\n") + content
+
+        return f"{prefix}{texto.strip()}"[:self.max_article_chars]
+
+    def _strip_refusal(self, answer: str) -> str:
+        """
+        O Llama 3.2 às vezes responde e, no fim, ainda cola a frase de
+        recusa. Se há resposta antes dela, a frase sai; se a resposta é só
+        a recusa, fica como está.
+        """
+        idx = answer.find(REFUSAL_SENTENCE)
+        if idx > 0 and answer[:idx].strip():
+            return answer[:idx].strip()
+        return answer
+
     def _is_fallback_response(self, answer: str) -> bool:
         """Verifica se a resposta é um fallback (segunda camada de segurança)"""
+        # Uma resposta com passos que só menciona "não encontrei" no meio
+        # não é recusa: só conta quando a resposta é curta.
+        if len(answer) > 200:
+            return False
         fallback_indicators = [
             "não encontrei",
             "não tenho informações",
