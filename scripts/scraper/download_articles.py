@@ -1,14 +1,16 @@
 # scripts/scraper/download_articles.py
 """
-Etapa 2: baixa cada artigo (via extract_links.py), limpa (clean_article.py)
-e grava o .md (save_markdown.py).
+Etapa 2: lê cada artigo (do cache da etapa 1, ou da web), limpa
+(clean_article.py) e grava o .md (save_markdown.py).
 """
 
 import json
-from playwright.sync_api import sync_playwright
+import shutil
+from pathlib import Path
 
-from config import LINKS_FILE, HEADLESS
+from config import LINKS_FILE, MARKDOWN_DIR
 from clean_article import clean_html
+from http_client import fetch
 from save_markdown import save_article_as_markdown
 
 
@@ -16,38 +18,29 @@ def download_and_process():
     with open(LINKS_FILE, encoding="utf-8") as f:
         artigos = json.load(f)
 
-    print(f"{len(artigos)} artigos para baixar")
+    print(f"{len(artigos)} artigos para processar")
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=HEADLESS)
-        page = browser.new_page()
+    # Recria a pasta para não sobrar .md de uma coleta anterior
+    shutil.rmtree(MARKDOWN_DIR, ignore_errors=True)
+    Path(MARKDOWN_DIR).mkdir(parents=True)
 
-        for i, artigo in enumerate(artigos):
-            url = artigo["url"]
-            print(f"[{i+1}/{len(artigos)}] {url}")
-            try:
-                page.goto(url, timeout=60000)
-                page.wait_for_timeout(3000)
-                html = page.content()
-
-                data = clean_html(
-                    html,
-                    url=url,
-                    fallback_title=artigo["title"],
-                    category=artigo.get("category", ""),
-                )
-                if not data["content"]:
-                    print(f"  ⚠️ sem conteúdo, pulando: {url}")
-                    continue
-
-                save_article_as_markdown(data, slug=artigo["slug"])
-            except Exception as e:
-                print(f"  ❌ erro em {url}: {e}")
+    salvos = 0
+    for artigo in artigos:
+        url = artigo["url"]
+        try:
+            html = fetch(url, cache_name=artigo["slug"])
+            data = clean_html(html, url=url, fallback_title=artigo["title"])
+            if not data["content"]:
+                print(f"  sem conteúdo, pulando: {url}")
                 continue
 
-        browser.close()
+            save_article_as_markdown(data, slug=artigo["slug"])
+            salvos += 1
+        except Exception as e:
+            print(f"  erro em {url}: {e}")
+            continue
 
-    print("Finalizado")
+    print(f"Finalizado: {salvos} artigos salvos em {MARKDOWN_DIR}")
 
 
 if __name__ == "__main__":

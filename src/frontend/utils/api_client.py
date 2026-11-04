@@ -90,7 +90,7 @@ class APIClient:
             else:
                 return {
                     "error": f"Erro {response.status_code}",
-                    "answer": f"❌ Erro ao processar pergunta: {response.status_code}",
+                    "answer": f"Erro ao processar pergunta: {response.status_code}",
                     "sources": [],
                     "similarity": 0.0,
                     "response_time": elapsed,
@@ -100,7 +100,7 @@ class APIClient:
         except requests.exceptions.Timeout:
             return {
                 "error": "Timeout",
-                "answer": "⏳ O modelo está demorando para responder. Tente novamente.",
+                "answer": "O modelo está demorando para responder. Tente novamente.",
                 "sources": [],
                 "similarity": 0.0,
                 "response_time": time.time() - start_time,
@@ -109,7 +109,7 @@ class APIClient:
         except requests.exceptions.ConnectionError:
             return {
                 "error": "ConnectionError",
-                "answer": "❌ Não foi possível conectar à API. Verifique se o servidor está rodando.",
+                "answer": "Não foi possível conectar à API. Verifique se o servidor está rodando.",
                 "sources": [],
                 "similarity": 0.0,
                 "response_time": time.time() - start_time,
@@ -118,7 +118,7 @@ class APIClient:
         except Exception as e:
             return {
                 "error": str(e),
-                "answer": f"❌ Erro: {str(e)}",
+                "answer": f"Erro: {str(e)}",
                 "sources": [],
                 "similarity": 0.0,
                 "response_time": time.time() - start_time,

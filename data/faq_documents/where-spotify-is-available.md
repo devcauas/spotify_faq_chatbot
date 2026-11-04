@@ -1,0 +1,264 @@
+---
+title: Onde o Spotify está disponível?
+url: https://support.spotify.com/br-pt/article/where-spotify-is-available/
+category: 
+---
+
+# Onde o Spotify está disponível?
+
+Confira a lista abaixo pra ver os lugares do mundo onde você pode se inscrever no Spotify.
+
+## África
+
+- Argélia
+- Angola
+- Benin
+- Botsuana
+- Burkina Faso
+- Burundi
+- Camarões
+- Cabo Verde
+- Chade
+- Comores
+- Costa do Marfim
+- República Democrática do Congo
+- Djibuti
+- Egito
+- Etiópia
+- Guiné Equatorial
+- Essuatíni
+- Gabão
+- Gâmbia
+- Gana
+- Guiné
+- Guiné-Bissau
+- Quênia
+- Lesoto
+- Libéria
+- Líbia
+- Madagascar
+- Malauí
+- Mali
+- Mauritânia
+- Maurício
+- Marrocos
+- Moçambique
+- Namíbia
+- Níger
+- Nigéria
+- República do Congo
+- Ruanda
+- São Tomé e Príncipe
+- Senegal
+- Seychelles
+- Serra Leoa
+- África do Sul
+- Tanzânia
+- Togo
+- Tunísia
+- Uganda
+- Zâmbia
+- Zimbábue
+
+## Ásia
+
+- Armênia
+- Azerbaijão
+- Barein
+- Bangladesh
+- Butão
+- Brunei
+- Camboja
+- Geórgia
+- Hong Kong
+- Índia
+- Indonésia
+- Iraque
+- Israel
+- Japão
+- Jordânia
+- Kuwait
+- Quirguistão
+- República Democrática Popular do Laos
+- Líbano
+- Macau
+- Malásia
+- Maldivas
+- Mongólia
+- Nepal
+- Omã
+- Paquistão
+- Palestina
+- Filipinas
+- Catar
+- Arábia Saudita
+- Singapura
+- Coreia do Sul
+- Sri Lanka
+- Taiwan
+- Tadjiquistão
+- Tailândia
+- Timor Leste
+- Emirados Árabes Unidos
+- Uzbequistão
+- Vietnã
+
+## Europa
+
+- Åland
+- Albânia
+- Andorra
+- Anguilla
+- Ilha de Ascensão
+- Áustria
+- Açores
+- Ilhas Baleares
+- Belarus
+- Bélgica
+- Bermudas
+- Bósnia
+- Ilhas Virgens Britânicas
+- Bulgária
+- Ilhas Canárias
+- Ilhas Cayman
+- Ceuta
+- Croácia
+- Chipre
+- República Tcheca
+- Dinamarca
+- Estônia
+- Ilhas Falkland
+- Ilhas Faroé
+- Finlândia
+- França
+- Guiana Francesa
+- Polinésia Francesa
+- Alemanha
+- Gibraltar
+- Grécia
+- Groenlândia
+- Guadalupe
+- Guernsey
+- Hungria
+- Islândia
+- Irlanda
+- Ilha de Man
+- Itália
+- Jersey
+- Cazaquistão
+- Kosovo
+- Letônia
+- Liechtenstein
+- Lituânia
+- Luxemburgo
+- Ilha da Madeira
+- Malta
+- Martinica
+- Mayotte
+- Melilla
+- Moldávia
+- Mônaco
+- Montenegro
+- Montserrat
+- Países Baixos
+- Nova Caledônia
+- Macedônia do Norte
+- Noruega
+- Ilhas Pitcairn
+- Polônia
+- Portugal
+- Romênia
+- Ilha da Reunião
+- São Bartolomeu
+- Santa Helena
+- São Martinho
+- São Pedro e Miquelão
+- San Marino
+- Sérvia
+- Eslováquia
+- Eslovênia
+- Espanha
+- Svalbard
+- Suécia
+- Suíça
+- Tristão da Cunha
+- Turquia
+- Ilhas Turcas e Caicos
+- Ucrânia
+- Reino Unido
+- Wallis e Futuna
+
+## América do Norte
+
+- Samoa Americana
+- Antígua e Barbuda
+- Bahamas
+- Barbados
+- Belize
+- Canadá
+- Costa Rica
+- Curaçao
+- Dominica
+- República Dominicana
+- El Salvador
+- Granada
+- Guam
+- Guatemala
+- Haiti
+- Honduras
+- Jamaica
+- México
+- Nicarágua
+- Ilhas Marianas do Norte
+- Panamá
+- Porto Rico
+- São Cristóvão e Névis
+- Santa Lúcia
+- São Vicente e Granadinas
+- Trinidad e Tobago
+- Estados Unidos
+- Ilhas Menores Distantes dos Estados Unidos (Ilha Navassa, Ilha Baker, Ilha Howland, Ilha Jarvis, Atol Johnston, Recife Kingman, Atol Midway, Ilha Wake)
+- Ilhas Virgens dos Estados Unidos
+
+## América do Sul
+
+- Argentina
+- Aruba
+- Bolívia
+- Brasil
+- Chile
+- Colômbia
+- Equador
+- Guiana
+- Paraguai
+- Peru
+- São Martinho (parte holandesa)
+- Suriname
+- Uruguai
+- Venezuela
+
+## Oceania
+
+- Austrália
+- Bonaire
+- Ilha Christmas
+- Ilhas Cocos (Keeling)
+- Ilhas Cook
+- Fiji
+- Kiribati
+- Ilhas Marshall
+- Micronésia
+- Nauru
+- Nova Zelândia
+- Niue
+- Ilha Norfolk
+- Palau
+- Papua Nova Guiné
+- Saba
+- Samoa
+- Santo Eustáquio
+- Ilhas Salomão
+- Toquelau
+- Tonga
+- Tuvalu
+- Vanuatu

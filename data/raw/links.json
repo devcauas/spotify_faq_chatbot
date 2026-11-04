@@ -2,55 +2,1056 @@
   {
     "title": "Atualizações de preço",
     "url": "https://support.spotify.com/br-pt/article/price-updates/",
-    "slug": "price-updates",
-    "category": "payment-help"
+    "slug": "price-updates"
   },
   {
     "title": "Ajuda com pagamento não efetuado",
     "url": "https://support.spotify.com/br-pt/article/failed-payment/",
-    "slug": "failed-payment",
-    "category": "payment-help"
+    "slug": "failed-payment"
   },
   {
     "title": "Formas de pagamento aceitas",
     "url": "https://support.spotify.com/br-pt/article/payment-methods/",
-    "slug": "payment-methods",
-    "category": "payment-help"
+    "slug": "payment-methods"
   },
   {
     "title": "Como mudar seus detalhes de pagamento",
     "url": "https://support.spotify.com/br-pt/article/change-payment-details/",
-    "slug": "change-payment-details",
-    "category": "payment-help"
+    "slug": "change-payment-details"
   },
   {
     "title": "Cartões pré-pagos do Spotify",
     "url": "https://support.spotify.com/br-pt/article/gift-cards/",
-    "slug": "gift-cards",
-    "category": "payment-help"
+    "slug": "gift-cards"
   },
   {
     "title": "Como cancelar um plano Premium",
     "url": "https://support.spotify.com/br-pt/article/cancel-premium/",
-    "slug": "cancel-premium",
-    "category": "payment-help"
+    "slug": "cancel-premium"
   },
   {
     "title": "Pagamentos para o plano Duo",
     "url": "https://support.spotify.com/br-pt/article/payments-duo-plan/",
-    "slug": "payments-duo-plan",
-    "category": "payment-help"
+    "slug": "payments-duo-plan"
   },
   {
     "title": "Pagamentos pelo plano Família",
     "url": "https://support.spotify.com/br-pt/article/payments-for-family-plan/",
-    "slug": "payments-for-family-plan",
-    "category": "payment-help"
+    "slug": "payments-for-family-plan"
   },
   {
     "title": "Atenção a possíveis golpes envolvendo o Spotify",
     "url": "https://support.spotify.com/br-pt/article/supposed-financial-incentives/",
-    "slug": "supposed-financial-incentives",
-    "category": "payment-help"
+    "slug": "supposed-financial-incentives"
+  },
+  {
+    "title": "Verifique seus recibos",
+    "url": "https://support.spotify.com/br-pt/article/check-receipts/",
+    "slug": "check-receipts"
+  },
+  {
+    "title": "Sua data de cobrança",
+    "url": "https://support.spotify.com/br-pt/article/billing-date/",
+    "slug": "billing-date"
+  },
+  {
+    "title": "Não é possível assinar o Premium no app para iOS",
+    "url": "https://support.spotify.com/br-pt/article/cant-subscribe-to-premium-in-the-ios-app/",
+    "slug": "cant-subscribe-to-premium-in-the-ios-app"
+  },
+  {
+    "title": "O que é um processador de pagamentos?",
+    "url": "https://support.spotify.com/br-pt/article/payment-processors/",
+    "slug": "payment-processors"
+  },
+  {
+    "title": "Pagamentos do PayPal para o Spotify",
+    "url": "https://support.spotify.com/br-pt/article/paypal-payments/",
+    "slug": "paypal-payments"
+  },
+  {
+    "title": "Como pagar o Spotify usando o Google Play Faturamento",
+    "url": "https://support.spotify.com/br-pt/article/google-play-help/",
+    "slug": "google-play-help"
+  },
+  {
+    "title": "Assinatura cancelada, mas ainda há cobrança",
+    "url": "https://support.spotify.com/br-pt/article/canceled-but-still-charged/",
+    "slug": "canceled-but-still-charged"
+  },
+  {
+    "title": "Política de reembolso",
+    "url": "https://support.spotify.com/br-pt/article/refund-policy/",
+    "slug": "refund-policy"
+  },
+  {
+    "title": "Recebi uma cobrança, mas não uso o Spotify Premium",
+    "url": "https://support.spotify.com/br-pt/article/charged-dont-use-premium/",
+    "slug": "charged-dont-use-premium"
+  },
+  {
+    "title": "Cobrança muito alta",
+    "url": "https://support.spotify.com/br-pt/article/charged-too-much/",
+    "slug": "charged-too-much"
+  },
+  {
+    "title": "Duas cobranças",
+    "url": "https://support.spotify.com/br-pt/article/charged-twice/",
+    "slug": "charged-twice"
+  },
+  {
+    "title": "Recebi uma cobrança por um teste grátis",
+    "url": "https://support.spotify.com/br-pt/article/charged-for-free-trial/",
+    "slug": "charged-for-free-trial"
+  },
+  {
+    "title": "O preço do Premium inclui impostos?",
+    "url": "https://support.spotify.com/br-pt/article/sales-tax/",
+    "slug": "sales-tax"
+  },
+  {
+    "title": "Política de reembolso de audiolivros",
+    "url": "https://support.spotify.com/br-pt/article/audiobook-refund-policy/",
+    "slug": "audiobook-refund-policy"
+  },
+  {
+    "title": "Fale conosco",
+    "url": "https://support.spotify.com/br-pt/article/contact-us/",
+    "slug": "contact-us"
+  },
+  {
+    "title": "Mudar como você entra no Spotify",
+    "url": "https://support.spotify.com/br-pt/article/changing-how-you-log-into-spotify/",
+    "slug": "changing-how-you-log-into-spotify"
+  },
+  {
+    "title": "Não consigo entrar no Spotify",
+    "url": "https://support.spotify.com/br-pt/article/cannot-remember-login/",
+    "slug": "cannot-remember-login"
+  },
+  {
+    "title": "Métodos de login do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/login-methods/",
+    "slug": "login-methods"
+  },
+  {
+    "title": "Como redefinir ou mudar sua senha do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/reset-password/",
+    "slug": "reset-password"
+  },
+  {
+    "title": "Como entrar no Spotify com o Facebook",
+    "url": "https://support.spotify.com/br-pt/article/facebook-login-help/",
+    "slug": "facebook-login-help"
+  },
+  {
+    "title": "Como entrar no Spotify com a Apple",
+    "url": "https://support.spotify.com/br-pt/article/apple-login-help/",
+    "slug": "apple-login-help"
+  },
+  {
+    "title": "Como entrar no Spotify com o Google",
+    "url": "https://support.spotify.com/br-pt/article/google-login-help/",
+    "slug": "google-login-help"
+  },
+  {
+    "title": "Como entrar no Spotify com seu número de telefone",
+    "url": "https://support.spotify.com/br-pt/article/phone-number-login-help/",
+    "slug": "phone-number-login-help"
+  },
+  {
+    "title": "Como entrar no Spotify com a Samsung",
+    "url": "https://support.spotify.com/br-pt/article/samsung-login-help/",
+    "slug": "samsung-login-help"
+  },
+  {
+    "title": "Não consigo ouvir no exterior",
+    "url": "https://support.spotify.com/br-pt/article/cant-play-abroad/",
+    "slug": "cant-play-abroad"
+  },
+  {
+    "title": "Contas desativadas do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/disabled-accounts/",
+    "slug": "disabled-accounts"
+  },
+  {
+    "title": "Como sair da conta do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/how-to-log-out/",
+    "slug": "how-to-log-out"
+  },
+  {
+    "title": "Gerencie e personalize seu perfil do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/spotify-profile/",
+    "slug": "spotify-profile"
+  },
+  {
+    "title": "Seu nome de usuário e de exibição no Spotify",
+    "url": "https://support.spotify.com/br-pt/article/username-and-display-name/",
+    "slug": "username-and-display-name"
+  },
+  {
+    "title": "Sua foto de perfil do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/profile-picture/",
+    "slug": "profile-picture"
+  },
+  {
+    "title": "Diretrizes de imagens de perfil e playlists",
+    "url": "https://support.spotify.com/br-pt/article/profile-and-playlist-image-guidelines/",
+    "slug": "profile-and-playlist-image-guidelines"
+  },
+  {
+    "title": "Controles de privacidade e redes sociais",
+    "url": "https://support.spotify.com/br-pt/article/privacy-and-social-controls/",
+    "slug": "privacy-and-social-controls"
+  },
+  {
+    "title": "Artistas tocados recentemente",
+    "url": "https://support.spotify.com/br-pt/article/recently-played-artists/",
+    "slug": "recently-played-artists"
+  },
+  {
+    "title": "Altere seu endereço de e‑mail",
+    "url": "https://support.spotify.com/br-pt/article/change-email-address/",
+    "slug": "change-email-address"
+  },
+  {
+    "title": "Altere suas configurações de país ou região",
+    "url": "https://support.spotify.com/br-pt/article/country-region-settings/",
+    "slug": "country-region-settings"
+  },
+  {
+    "title": "Como encerrar sua conta e excluir seus dados",
+    "url": "https://support.spotify.com/br-pt/article/how-can-i-close-my-spotify-account/",
+    "slug": "how-can-i-close-my-spotify-account"
+  },
+  {
+    "title": "Suas configurações de notificação do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/notification-settings/",
+    "slug": "notification-settings"
+  },
+  {
+    "title": "Como gerenciar suas preferências de anúncios",
+    "url": "https://support.spotify.com/br-pt/article/managing-your-ad-preferences/",
+    "slug": "managing-your-ad-preferences"
+  },
+  {
+    "title": "Editar o gênero ou a data de nascimento",
+    "url": "https://support.spotify.com/br-pt/article/change-gender-or-date-of-birth/",
+    "slug": "change-gender-or-date-of-birth"
+  },
+  {
+    "title": "Como desvincular seu Spotify de criadores de terceiros",
+    "url": "https://support.spotify.com/br-pt/article/unlinking-from-third-party-creators/",
+    "slug": "unlinking-from-third-party-creators"
+  },
+  {
+    "title": "Proteja sua conta do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/protect-your-account/",
+    "slug": "protect-your-account"
+  },
+  {
+    "title": "Acha que sua conta foi invadida?",
+    "url": "https://support.spotify.com/br-pt/article/hacked-account-help/",
+    "slug": "hacked-account-help"
+  },
+  {
+    "title": "Este e-mail do Spotify é confiável?",
+    "url": "https://support.spotify.com/br-pt/article/spotify-email-legit/",
+    "slug": "spotify-email-legit"
+  },
+  {
+    "title": "Detecção de abuso",
+    "url": "https://support.spotify.com/br-pt/article/abuse-detection/",
+    "slug": "abuse-detection"
+  },
+  {
+    "title": "Verifique seu endereço de e-mail",
+    "url": "https://support.spotify.com/br-pt/article/verify-email-address/",
+    "slug": "verify-email-address"
+  },
+  {
+    "title": "Premium Individual",
+    "url": "https://support.spotify.com/br-pt/article/premium-individual/",
+    "slug": "premium-individual"
+  },
+  {
+    "title": "Premium Universitário",
+    "url": "https://support.spotify.com/br-pt/article/premium-student/",
+    "slug": "premium-student"
+  },
+  {
+    "title": "Plano Duo",
+    "url": "https://support.spotify.com/br-pt/article/duo-plan/",
+    "slug": "duo-plan"
+  },
+  {
+    "title": "Plano Família",
+    "url": "https://support.spotify.com/br-pt/article/family-plan/",
+    "slug": "family-plan"
+  },
+  {
+    "title": "Spotify Kids",
+    "url": "https://support.spotify.com/br-pt/article/spotify-kids/",
+    "slug": "spotify-kids"
+  },
+  {
+    "title": "Detalhes do seu plano do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/your-plan-details/",
+    "slug": "your-plan-details"
+  },
+  {
+    "title": "Como trocar de plano Premium",
+    "url": "https://support.spotify.com/br-pt/article/change-premium-plans/",
+    "slug": "change-premium-plans"
+  },
+  {
+    "title": "O Premium não está funcionando",
+    "url": "https://support.spotify.com/br-pt/article/premium-not-working/",
+    "slug": "premium-not-working"
+  },
+  {
+    "title": "Não consigo entrar no plano Família",
+    "url": "https://support.spotify.com/br-pt/article/cannot-join-family-plan/",
+    "slug": "cannot-join-family-plan"
+  },
+  {
+    "title": "Não é possível entrar no plano Duo",
+    "url": "https://support.spotify.com/br-pt/article/cannot-join-duo-plan/",
+    "slug": "cannot-join-duo-plan"
+  },
+  {
+    "title": "Convidar ou remover membros do plano Família",
+    "url": "https://support.spotify.com/br-pt/article/invite-remove-family-member/",
+    "slug": "invite-remove-family-member"
+  },
+  {
+    "title": "Endereço e verificação para o plano Família",
+    "url": "https://support.spotify.com/br-pt/article/family-address-verification/",
+    "slug": "family-address-verification"
+  },
+  {
+    "title": "Contas monitoradas para jovens ouvintes",
+    "url": "https://support.spotify.com/br-pt/article/managed-accounts/",
+    "slug": "managed-accounts"
+  },
+  {
+    "title": "Como configurar uma conta monitorada no Premium Família",
+    "url": "https://support.spotify.com/br-pt/article/setting-up-a-managed-account-on-premium-family/",
+    "slug": "setting-up-a-managed-account-on-premium-family"
+  },
+  {
+    "title": "Mudar para uma conta liberada",
+    "url": "https://support.spotify.com/br-pt/article/graduating-to-a-self-managed-account/",
+    "slug": "graduating-to-a-self-managed-account"
+  },
+  {
+    "title": "Convidar ou remover membros do plano Duo",
+    "url": "https://support.spotify.com/br-pt/article/invite-remove-duo-member/",
+    "slug": "invite-remove-duo-member"
+  },
+  {
+    "title": "Endereço e verificação para o plano Duo",
+    "url": "https://support.spotify.com/br-pt/article/address-verification-duo/",
+    "slug": "address-verification-duo"
+  },
+  {
+    "title": "Renovar o Premium Universitário",
+    "url": "https://support.spotify.com/br-pt/article/renew-student-discount/",
+    "slug": "renew-student-discount"
+  },
+  {
+    "title": "A verificação do Premium Universitário não está funcionando",
+    "url": "https://support.spotify.com/br-pt/article/student-verification-not-working/",
+    "slug": "student-verification-not-working"
+  },
+  {
+    "title": "Universidade ou faculdade não encontrada na lista do Premium Universitário",
+    "url": "https://support.spotify.com/br-pt/article/university-or-college-not-listed/",
+    "slug": "university-or-college-not-listed"
+  },
+  {
+    "title": "Introdução ao Spotify",
+    "url": "https://support.spotify.com/br-pt/article/getting-started/",
+    "slug": "getting-started"
+  },
+  {
+    "title": "O que é o Spotify?",
+    "url": "https://support.spotify.com/br-pt/article/what-is-spotify/",
+    "slug": "what-is-spotify"
+  },
+  {
+    "title": "Sua Biblioteca",
+    "url": "https://support.spotify.com/br-pt/article/your-library/",
+    "slug": "your-library"
+  },
+  {
+    "title": "Tela Tocando agora",
+    "url": "https://support.spotify.com/br-pt/article/now-playing/",
+    "slug": "now-playing"
+  },
+  {
+    "title": "Onde o Spotify está disponível?",
+    "url": "https://support.spotify.com/br-pt/article/where-spotify-is-available/",
+    "slug": "where-spotify-is-available"
+  },
+  {
+    "title": "Dispositivos compatíveis com o Spotify",
+    "url": "https://support.spotify.com/br-pt/article/supported-devices-for-spotify/",
+    "slug": "supported-devices-for-spotify"
+  },
+  {
+    "title": "Spotify para uso público ou comercial",
+    "url": "https://support.spotify.com/br-pt/article/spotify-public-commercial-use/",
+    "slug": "spotify-public-commercial-use"
+  },
+  {
+    "title": "Atalhos de teclado do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/keyboard-shortcuts/",
+    "slug": "keyboard-shortcuts"
+  },
+  {
+    "title": "Spotify for Artists",
+    "url": "https://support.spotify.com/br-pt/article/spotify-for-artists/",
+    "slug": "spotify-for-artists"
+  },
+  {
+    "title": "Spotify for Creators",
+    "url": "https://support.spotify.com/br-pt/article/spotify-for-creators/",
+    "slug": "spotify-for-creators"
+  },
+  {
+    "title": "Configurações de vídeo",
+    "url": "https://support.spotify.com/br-pt/article/video-settings/",
+    "slug": "video-settings"
+  },
+  {
+    "title": "Configurações de conteúdo explícito",
+    "url": "https://support.spotify.com/br-pt/article/explicit-content/",
+    "slug": "explicit-content"
+  },
+  {
+    "title": "Normalização do volume",
+    "url": "https://support.spotify.com/br-pt/article/volume-normalization/",
+    "slug": "volume-normalization"
+  },
+  {
+    "title": "Qualidade do áudio",
+    "url": "https://support.spotify.com/br-pt/article/audio-quality/",
+    "slug": "audio-quality"
+  },
+  {
+    "title": "Faixas do AutoPlay",
+    "url": "https://support.spotify.com/br-pt/article/autoplay/",
+    "slug": "autoplay"
+  },
+  {
+    "title": "Transições entre faixas",
+    "url": "https://support.spotify.com/br-pt/article/tracks-transitions/",
+    "slug": "tracks-transitions"
+  },
+  {
+    "title": "Equalizador",
+    "url": "https://support.spotify.com/br-pt/article/equalizer/",
+    "slug": "equalizer"
+  },
+  {
+    "title": "Como ativar uma sessão particular",
+    "url": "https://support.spotify.com/br-pt/article/private-listening/",
+    "slug": "private-listening"
+  },
+  {
+    "title": "Internet e uso de dados",
+    "url": "https://support.spotify.com/br-pt/article/internet-and-data-usage/",
+    "slug": "internet-and-data-usage"
+  },
+  {
+    "title": "Informações sobre armazenamento do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/storage-information/",
+    "slug": "storage-information"
+  },
+  {
+    "title": "Como ocultar e mostrar o botão Criar",
+    "url": "https://support.spotify.com/br-pt/article/hide-display-create-button/",
+    "slug": "hide-display-create-button"
+  },
+  {
+    "title": "Como mudar o idioma do app",
+    "url": "https://support.spotify.com/br-pt/article/change-language/",
+    "slug": "change-language"
+  },
+  {
+    "title": "Backup offline",
+    "url": "https://support.spotify.com/br-pt/article/offline-backup/",
+    "slug": "offline-backup"
+  },
+  {
+    "title": "Como reinstalar o app Spotify",
+    "url": "https://support.spotify.com/br-pt/article/reinstall-spotify/",
+    "slug": "reinstall-spotify"
+  },
+  {
+    "title": "Como atualizar seu app Spotify",
+    "url": "https://support.spotify.com/br-pt/article/updating-spotify/",
+    "slug": "updating-spotify"
+  },
+  {
+    "title": "O Spotify não está tocando",
+    "url": "https://support.spotify.com/br-pt/article/spotify-not-playing/",
+    "slug": "spotify-not-playing"
+  },
+  {
+    "title": "Por que o app mudou?",
+    "url": "https://support.spotify.com/br-pt/article/why-has-the-app-changed/",
+    "slug": "why-has-the-app-changed"
+  },
+  {
+    "title": "O Spotify está offline",
+    "url": "https://support.spotify.com/br-pt/article/spotify-is-offline/",
+    "slug": "spotify-is-offline"
+  },
+  {
+    "title": "Não consigo ouvir nenhum som no Spotify",
+    "url": "https://support.spotify.com/br-pt/article/cant-hear-spotify/",
+    "slug": "cant-hear-spotify"
+  },
+  {
+    "title": "Músicas ou podcasts desaparecidos",
+    "url": "https://support.spotify.com/br-pt/article/missing-music-or-podcasts/",
+    "slug": "missing-music-or-podcasts"
+  },
+  {
+    "title": "Ajuda com o Web player do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/web-player-help/",
+    "slug": "web-player-help"
+  },
+  {
+    "title": "Problemas atuais",
+    "url": "https://support.spotify.com/br-pt/article/ongoing-issues/",
+    "slug": "ongoing-issues"
+  },
+  {
+    "title": "Metadados incorretos ou com defeito",
+    "url": "https://support.spotify.com/br-pt/article/faulty-inaccurate-metadata/",
+    "slug": "faulty-inaccurate-metadata"
+  },
+  {
+    "title": "Como verificar a versão do seu app Spotify",
+    "url": "https://support.spotify.com/br-pt/article/checking-spotify-app-version/",
+    "slug": "checking-spotify-app-version"
+  },
+  {
+    "title": "Criar e editar playlists",
+    "url": "https://support.spotify.com/br-pt/article/create-playlists/",
+    "slug": "create-playlists"
+  },
+  {
+    "title": "Encontrar playlists no Spotify",
+    "url": "https://support.spotify.com/br-pt/article/find-playlists/",
+    "slug": "find-playlists"
+  },
+  {
+    "title": "Playlists mixadas",
+    "url": "https://support.spotify.com/br-pt/article/mixed-playlists/",
+    "slug": "mixed-playlists"
+  },
+  {
+    "title": "Mixes do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/spotify-mixes/",
+    "slug": "spotify-mixes"
+  },
+  {
+    "title": "Salvar e restaurar playlists",
+    "url": "https://support.spotify.com/br-pt/article/save-recover-playlists/",
+    "slug": "save-recover-playlists"
+  },
+  {
+    "title": "Playlists colaborativas",
+    "url": "https://support.spotify.com/br-pt/article/collaborative-playlists/",
+    "slug": "collaborative-playlists"
+  },
+  {
+    "title": "Pastas de playlists",
+    "url": "https://support.spotify.com/br-pt/article/playlist-folders/",
+    "slug": "playlist-folders"
+  },
+  {
+    "title": "Publicar playlists no seu perfil",
+    "url": "https://support.spotify.com/br-pt/article/playlist-publishing/",
+    "slug": "playlist-publishing"
+  },
+  {
+    "title": "Personalizar a capa da sua playlist",
+    "url": "https://support.spotify.com/br-pt/article/add-playlist-cover/",
+    "slug": "add-playlist-cover"
+  },
+  {
+    "title": "Recomendações sociais em playlists",
+    "url": "https://support.spotify.com/br-pt/article/social-recommendations-in-playlists/",
+    "slug": "social-recommendations-in-playlists"
+  },
+  {
+    "title": "Como importar suas playlists para o Spotify",
+    "url": "https://support.spotify.com/br-pt/article/importing-your-playlists-to-spotify/",
+    "slug": "importing-your-playlists-to-spotify"
+  },
+  {
+    "title": "Complementos",
+    "url": "https://support.spotify.com/br-pt/article/add-ons/",
+    "slug": "add-ons"
+  },
+  {
+    "title": "Buscar",
+    "url": "https://support.spotify.com/br-pt/article/search/",
+    "slug": "search"
+  },
+  {
+    "title": "Busca por preenchimento automático",
+    "url": "https://support.spotify.com/br-pt/article/search-autocomplete/",
+    "slug": "search-autocomplete"
+  },
+  {
+    "title": "Ouça offline",
+    "url": "https://support.spotify.com/br-pt/article/listen-offline/",
+    "slug": "listen-offline"
+  },
+  {
+    "title": "Acessar audiolivros",
+    "url": "https://support.spotify.com/br-pt/article/audiobooks-unlock/",
+    "slug": "audiobooks-unlock"
+  },
+  {
+    "title": "Classificar e filtrar",
+    "url": "https://support.spotify.com/br-pt/article/sort-and-filter/",
+    "slug": "sort-and-filter"
+  },
+  {
+    "title": "Adicionar à fila",
+    "url": "https://support.spotify.com/br-pt/article/play-queue/",
+    "slug": "play-queue"
+  },
+  {
+    "title": "Atividade recente",
+    "url": "https://support.spotify.com/br-pt/article/recent-activity/",
+    "slug": "recent-activity"
+  },
+  {
+    "title": "Ordem aleatória",
+    "url": "https://support.spotify.com/br-pt/article/shuffle-play/",
+    "slug": "shuffle-play"
+  },
+  {
+    "title": "Rádio Spotify",
+    "url": "https://support.spotify.com/br-pt/article/spotify-radio/",
+    "slug": "spotify-radio"
+  },
+  {
+    "title": "Ver letra",
+    "url": "https://support.spotify.com/br-pt/article/lyrics/",
+    "slug": "lyrics"
+  },
+  {
+    "title": "Arquivos locais",
+    "url": "https://support.spotify.com/br-pt/article/local-files/",
+    "slug": "local-files"
+  },
+  {
+    "title": "Siga artistas, podcasts e programas",
+    "url": "https://support.spotify.com/br-pt/article/follow-artists-podcasts-and-shows/",
+    "slug": "follow-artists-podcasts-and-shows"
+  },
+  {
+    "title": "Spotify Connect",
+    "url": "https://support.spotify.com/br-pt/article/spotify-connect/",
+    "slug": "spotify-connect"
+  },
+  {
+    "title": "Spotify em outros aplicativos",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-other-apps/",
+    "slug": "spotify-on-other-apps"
+  },
+  {
+    "title": "Como ocultar e exibir músicas",
+    "url": "https://support.spotify.com/br-pt/article/hide-unhide-songs/",
+    "slug": "hide-unhide-songs"
+  },
+  {
+    "title": "Sugira um recurso",
+    "url": "https://support.spotify.com/br-pt/article/suggest-feature/",
+    "slug": "suggest-feature"
+  },
+  {
+    "title": "Excluir uma playlist ou faixa do seu perfil musical",
+    "url": "https://support.spotify.com/br-pt/article/exclude-playlists-or-tracks-from-your-taste-profile/",
+    "slug": "exclude-playlists-or-tracks-from-your-taste-profile"
+  },
+  {
+    "title": "DJ",
+    "url": "https://support.spotify.com/br-pt/article/dj/",
+    "slug": "dj"
+  },
+  {
+    "title": "Widget da tela de bloqueio do Spotify no iPhone",
+    "url": "https://support.spotify.com/br-pt/article/spotify-iphone-widget/",
+    "slug": "spotify-iphone-widget"
+  },
+  {
+    "title": "Widget da tela inicial do Spotify no Android",
+    "url": "https://support.spotify.com/br-pt/article/spotify-android-widget/",
+    "slug": "spotify-android-widget"
+  },
+  {
+    "title": "Videoclipes no Spotify",
+    "url": "https://support.spotify.com/br-pt/article/music-videos/",
+    "slug": "music-videos"
+  },
+  {
+    "title": "Fitness com o Spotify",
+    "url": "https://support.spotify.com/br-pt/article/fitness-classes/",
+    "slug": "fitness-classes"
+  },
+  {
+    "title": "Sua Máquina do Tempo",
+    "url": "https://support.spotify.com/br-pt/article/your-sound-capsule/",
+    "slug": "your-sound-capsule"
+  },
+  {
+    "title": "Suas atualizações",
+    "url": "https://support.spotify.com/br-pt/article/your-updates/",
+    "slug": "your-updates"
+  },
+  {
+    "title": "Mensagens do Spotify",
+    "url": "https://support.spotify.com/br-pt/article/messages/",
+    "slug": "messages"
+  },
+  {
+    "title": "Músicas infantis e para a família",
+    "url": "https://support.spotify.com/br-pt/article/kids-and-family-music/",
+    "slug": "kids-and-family-music"
+  },
+  {
+    "title": "Verificado pelo Spotify",
+    "url": "https://support.spotify.com/br-pt/article/verified-by-spotify/",
+    "slug": "verified-by-spotify"
+  },
+  {
+    "title": "Sobre a seção “Detalhes do artista”",
+    "url": "https://support.spotify.com/br-pt/article/about-the-artist-details-section/",
+    "slug": "about-the-artist-details-section"
+  },
+  {
+    "title": "Selo de persona de IA",
+    "url": "https://support.spotify.com/br-pt/article/ai-persona-badge/",
+    "slug": "ai-persona-badge"
+  },
+  {
+    "title": "Créditos de IA",
+    "url": "https://support.spotify.com/br-pt/article/ai-credits/",
+    "slug": "ai-credits"
+  },
+  {
+    "title": "Adicionar ao Spotify (“Save to Spotify”)",
+    "url": "https://support.spotify.com/br-pt/article/save-to-spotify/",
+    "slug": "save-to-spotify"
+  },
+  {
+    "title": "Retrospectiva Spotify",
+    "url": "https://support.spotify.com/br-pt/article/spotify-wrapped/",
+    "slug": "spotify-wrapped"
+  },
+  {
+    "title": "Siga seus amigos e gerencie seguidores",
+    "url": "https://support.spotify.com/br-pt/article/follow-friends-manage-followers/",
+    "slug": "follow-friends-manage-followers"
+  },
+  {
+    "title": "Compartilhar usando o Spotify",
+    "url": "https://support.spotify.com/br-pt/article/share-from-spotify/",
+    "slug": "share-from-spotify"
+  },
+  {
+    "title": "Histórico de escuta",
+    "url": "https://support.spotify.com/br-pt/article/listening-activity/",
+    "slug": "listening-activity"
+  },
+  {
+    "title": "Iniciar ou entrar em uma Jam",
+    "url": "https://support.spotify.com/br-pt/article/jam/",
+    "slug": "jam"
+  },
+  {
+    "title": "Discord e Spotify",
+    "url": "https://support.spotify.com/br-pt/article/discord-and-spotify/",
+    "slug": "discord-and-spotify"
+  },
+  {
+    "title": "Spotify no SharePlay",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-shareplay/",
+    "slug": "spotify-on-shareplay"
+  },
+  {
+    "title": "Festa virtual",
+    "url": "https://support.spotify.com/br-pt/article/listening-party/",
+    "slug": "listening-party"
+  },
+  {
+    "title": "TikTok e Spotify",
+    "url": "https://support.spotify.com/br-pt/article/tiktok-and-spotify/",
+    "slug": "tiktok-and-spotify"
+  },
+  {
+    "title": "Podcasts e programas",
+    "url": "https://support.spotify.com/br-pt/article/podcasts-and-shows/",
+    "slug": "podcasts-and-shows"
+  },
+  {
+    "title": "Assinaturas do podcast",
+    "url": "https://support.spotify.com/br-pt/article/podcast-memberships/",
+    "slug": "podcast-memberships"
+  },
+  {
+    "title": "Audiolivros em planos Premium",
+    "url": "https://support.spotify.com/br-pt/article/audiobooks-premium-plans/",
+    "slug": "audiobooks-premium-plans"
+  },
+  {
+    "title": "Catálogo de audiolivros para assinantes",
+    "url": "https://support.spotify.com/br-pt/article/audiobooks-subscriber-catalog/",
+    "slug": "audiobooks-subscriber-catalog"
+  },
+  {
+    "title": "Comprar tempo para ouvir audiolivros",
+    "url": "https://support.spotify.com/br-pt/article/audiobook-listening-time-purchase/",
+    "slug": "audiobook-listening-time-purchase"
+  },
+  {
+    "title": "Audiolivros+",
+    "url": "https://support.spotify.com/br-pt/article/audiobooks-plus/",
+    "slug": "audiobooks-plus"
+  },
+  {
+    "title": "Política de reembolso de recargas",
+    "url": "https://support.spotify.com/br-pt/article/refund-policy-audiobook-hours/",
+    "slug": "refund-policy-audiobook-hours"
+  },
+  {
+    "title": "Feed de eventos ao vivo",
+    "url": "https://support.spotify.com/br-pt/article/live-events-feed/",
+    "slug": "live-events-feed"
+  },
+  {
+    "title": "E-mails de pré-venda e merchandise",
+    "url": "https://support.spotify.com/br-pt/article/presale-and-merch-emails/",
+    "slug": "presale-and-merch-emails"
+  },
+  {
+    "title": "Shows perto de você",
+    "url": "https://support.spotify.com/br-pt/article/concerts-near-you/",
+    "slug": "concerts-near-you"
+  },
+  {
+    "title": "Privacidade e acesso de playlists",
+    "url": "https://support.spotify.com/br-pt/article/playlist-privacy-and-access/",
+    "slug": "playlist-privacy-and-access"
+  },
+  {
+    "title": "Spotify em alto-falantes",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-speakers/",
+    "slug": "spotify-on-speakers"
+  },
+  {
+    "title": "Spotify em dispositivos Alexa",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-alexa-devices/",
+    "slug": "spotify-on-alexa-devices"
+  },
+  {
+    "title": "Spotify em dispositivos Google",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-google-devices/",
+    "slug": "spotify-on-google-devices"
+  },
+  {
+    "title": "Spotify no Sonos",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-sonos/",
+    "slug": "spotify-on-sonos"
+  },
+  {
+    "title": "Ajuda para usar o Spotify por Bluetooth",
+    "url": "https://support.spotify.com/br-pt/article/bluetooth/",
+    "slug": "bluetooth"
+  },
+  {
+    "title": "Spotify no Apple Watch",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-apple-watch/",
+    "slug": "spotify-on-apple-watch"
+  },
+  {
+    "title": "Spotify no Fitbit",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-fitbit/",
+    "slug": "spotify-on-fitbit"
+  },
+  {
+    "title": "Spotify no smartwatch Garmin",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-garmin-smartwatch/",
+    "slug": "spotify-on-garmin-smartwatch"
+  },
+  {
+    "title": "Spotify nos smartwatches Samsung Tizen",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-samsung-tizen-smartwatches/",
+    "slug": "spotify-on-samsung-tizen-smartwatches"
+  },
+  {
+    "title": "Spotify no Wear OS",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-wear-os/",
+    "slug": "spotify-on-wear-os"
+  },
+  {
+    "title": "Spotify na TV",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-tv/",
+    "slug": "spotify-on-tv"
+  },
+  {
+    "title": "Spotify no PlayStation",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-playstation/",
+    "slug": "spotify-on-playstation"
+  },
+  {
+    "title": "Spotify no Xbox",
+    "url": "https://support.spotify.com/br-pt/article/spotify-on-xbox/",
+    "slug": "spotify-on-xbox"
+  },
+  {
+    "title": "Spotify no carro",
+    "url": "https://support.spotify.com/br-pt/article/spotify-in-the-car/",
+    "slug": "spotify-in-the-car"
+  },
+  {
+    "title": "Google Maps e Spotify",
+    "url": "https://support.spotify.com/br-pt/article/google-maps/",
+    "slug": "google-maps"
+  },
+  {
+    "title": "Siri e Spotify",
+    "url": "https://support.spotify.com/br-pt/article/siri-and-spotify/",
+    "slug": "siri-and-spotify"
+  },
+  {
+    "title": "Bixby e Spotify",
+    "url": "https://support.spotify.com/br-pt/article/bixby-and-spotify/",
+    "slug": "bixby-and-spotify"
+  },
+  {
+    "title": "Direitos sobre dados e escolhas de privacidade",
+    "url": "https://support.spotify.com/br-pt/article/data-rights-and-privacy-settings/",
+    "slug": "data-rights-and-privacy-settings"
+  },
+  {
+    "title": "Como interpretar seus dados",
+    "url": "https://support.spotify.com/br-pt/article/understanding-your-data/",
+    "slug": "understanding-your-data"
+  },
+  {
+    "title": "Conteúdo com restrição de idade e verificação da sua idade",
+    "url": "https://support.spotify.com/br-pt/article/age-restricted-content-age-check/",
+    "slug": "age-restricted-content-age-check"
+  },
+  {
+    "title": "Centro de privacidade e segurança",
+    "url": "https://support.spotify.com/br-pt/article/safetyandprivacy/",
+    "slug": "safetyandprivacy"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/currency-conversion/",
+    "slug": "currency-conversion"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/card-payment-authentication/",
+    "slug": "card-payment-authentication"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/gift-card-not-working/",
+    "slug": "gift-card-not-working"
+  },
+  {
+    "title": "Plano Duo",
+    "url": "https://support.spotify.com/br-pt/article/duo-plan-ios/",
+    "slug": "duo-plan-ios"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/your-taste-profile/",
+    "slug": "your-taste-profile"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/pay-as-you-go/",
+    "slug": "pay-as-you-go"
+  },
+  {
+    "title": "Plano Família",
+    "url": "https://support.spotify.com/br-pt/article/family-plan-ios/",
+    "slug": "family-plan-ios"
+  },
+  {
+    "title": "Como configurar uma conta monitorada",
+    "url": "https://support.spotify.com/br-pt/article/setting-up-a-managed-account/",
+    "slug": "setting-up-a-managed-account"
+  },
+  {
+    "title": "Seu dispositivo não é mais compatível com o Spotify Connect",
+    "url": "https://support.spotify.com/br-pt/article/connect-no-longer-supported/",
+    "slug": "connect-no-longer-supported"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/premium-platinum/",
+    "slug": "premium-platinum"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/listening-stats/",
+    "slug": "listening-stats"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/talk-to-spotify/",
+    "slug": "talk-to-spotify"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/prompted-playlists/",
+    "slug": "prompted-playlists"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/ai-playlist/",
+    "slug": "ai-playlist"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/ai-usage-limits/",
+    "slug": "ai-usage-limits"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/remote-group-session-archived/",
+    "slug": "remote-group-session-archived"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/create-podcasts-archived/",
+    "slug": "create-podcasts-archived"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/audiobooks-access-plan/",
+    "slug": "audiobooks-access-plan"
+  },
+  {
+    "title": "Esta página está fora de tom",
+    "url": "https://support.spotify.com/br-pt/article/gdpr-article-15-information-archived/",
+    "slug": "gdpr-article-15-information-archived"
   }
 ]

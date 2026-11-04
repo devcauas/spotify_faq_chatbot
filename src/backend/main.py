@@ -64,6 +64,7 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     sources: list[str]
+    source_titles: list[str] = []
     similarity: float
     response_time: float
     fallback: bool
@@ -109,6 +110,7 @@ def chat(request: ChatRequest):
     return ChatResponse(
         answer=result["answer"],
         sources=result["sources"],
+        source_titles=result.get("source_titles", []),
         similarity=result["similarity"],
         response_time=result["response_time"],
         fallback=result["is_fallback"]

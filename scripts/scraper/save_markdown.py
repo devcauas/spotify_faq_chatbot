@@ -21,5 +21,5 @@ def save_article_as_markdown(article: dict, slug: str) -> Path:
     body = f"# {article['title']}\n\n{article['content']}\n"
 
     output_path.write_text(frontmatter + body, encoding="utf-8")
-    print(f"  💾 salvo: {output_path}")
+    print(f"  salvo: {output_path}")
     return output_path

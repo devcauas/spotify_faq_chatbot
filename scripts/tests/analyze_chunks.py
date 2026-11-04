@@ -20,7 +20,7 @@ def analyze_chunks():
             all_docs['documents'], 
             all_docs['metadatas']
         )):
-            print(f"\n📄 CHUNK {i+1} (ID: {doc_id})")
+            print(f"\nCHUNK {i+1} (ID: {doc_id})")
             print("-" * 40)
             print(f"Tamanho: {len(doc)} caracteres")
             print(f"Fonte: {metadata.get('source', 'unknown')}")

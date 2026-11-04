@@ -20,9 +20,8 @@ from src.frontend.components.sidebar import render_sidebar
 # ============================================
 
 st.set_page_config(
-    page_title="Spotify FAQ Chatbot",
-    page_icon="🎵",
-    layout="wide",
+    page_title="Central de Ajuda do Spotify | Assistente",
+    layout="centered",
     initial_sidebar_state="expanded"
 )
 
@@ -30,44 +29,123 @@ st.set_page_config(
 # CSS PERSONALIZADO
 # ============================================
 
+# As cores do tema ficam em .streamlit/config.toml; aqui só o que o tema
+# não cobre: faixa do título, avatares, cores das mensagens e das fontes.
 st.markdown("""
 <style>
-    /* Título principal */
-    .main-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #1DB954;
-        margin-bottom: 0.5rem;
+    /* Faixa em degradê que o Streamlit põe no topo da página */
+    [data-testid="stDecoration"] {
+        display: none;
     }
-    
-    .main-subtitle {
-        font-size: 1rem;
-        color: #666;
-        margin-bottom: 2rem;
+
+    header[data-testid="stHeader"] {
+        background: transparent;
     }
-    
-    /* Chat messages */
-    .stChatMessage {
-        padding: 0.5rem 1rem;
+
+    .block-container {
+        padding-top: 2.5rem;
+        max-width: 760px;
     }
-    
-    /* Botões */
-    .stButton button {
-        background-color: #1DB954;
-        color: white;
-        font-weight: 600;
-    }
-    
-    .stButton button:hover {
-        background-color: #1ed760;
-        color: white;
-    }
-    
-    /* Métricas */
-    [data-testid="metric-container"] {
-        background-color: #f0f2f6;
+
+    /* Faixa do título em verde escuro: a cor da marca sem o neon */
+    .app-header {
+        background: #1F6B4F;
+        color: #FAF8F3;
         border-radius: 10px;
-        padding: 10px;
+        padding: 1.3rem 1.5rem 1.1rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .app-title {
+        font-size: 1.5rem;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+        margin: 0 0 0.3rem 0;
+        color: #FAF8F3;
+    }
+
+    .app-subtitle {
+        color: #CFE3D8;
+        font-size: 0.93rem;
+        margin: 0;
+    }
+
+    /* Sem avatares de robô: quem fala é indicado pelo rótulo */
+    [data-testid="chatAvatarIcon-user"],
+    [data-testid="chatAvatarIcon-assistant"],
+    [data-testid="stChatMessage"] > img {
+        display: none;
+    }
+
+    [data-testid="stChatMessage"] {
+        padding: 0.9rem 1.1rem;
+        border-radius: 10px;
+        gap: 0;
+    }
+
+    [data-testid="stChatMessage"]:has(.msg-user) {
+        background: #E3EEE7;
+        margin-left: 3rem;
+    }
+
+    [data-testid="stChatMessage"]:has(.msg-assistant) {
+        background: #FFFFFF;
+        border: 1px solid #DCE6DF;
+        border-left: 4px solid #1F6B4F;
+    }
+
+    .msg-role {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        margin-bottom: 0.35rem;
+    }
+
+    .msg-role.msg-user {
+        color: #1F6B4F;
+    }
+
+    .msg-role.msg-assistant {
+        color: #B5651D;
+    }
+
+    .msg-sources {
+        border-top: 1px solid #DCE6DF;
+        margin-top: 0.8rem;
+        padding-top: 0.6rem;
+        font-size: 0.85rem;
+        color: #4A5550;
+    }
+
+    .msg-sources ol {
+        margin: 0.2rem 0 0 1.1rem;
+        padding: 0;
+    }
+
+    .msg-sources a {
+        color: #1F6B4F;
+        font-weight: 500;
+    }
+
+    .msg-meta {
+        color: #7A847F;
+        font-size: 0.78rem;
+        margin-top: 0.5rem;
+    }
+
+    .stButton button {
+        border-radius: 8px;
+        border: 1px solid #BFD5C7;
+        background: #FFFFFF;
+        color: #1F6B4F;
+        font-weight: 500;
+    }
+
+    .stButton button:hover {
+        background: #E3EEE7;
+        border-color: #1F6B4F;
+        color: #174F3B;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -82,26 +160,26 @@ if "api_client" not in st.session_state:
 
 # Inicializa o histórico de mensagens
 if "messages" not in st.session_state:
-    # Mensagem de boas-vindas
-    st.session_state.messages = [{
-        "role": "assistant",
-        "content": """👋 Olá! Sou o assistente do Spotify.
+    st.session_state.messages = []
 
-**O que você gostaria de saber?**""",
-    }]
+EXEMPLOS = [
+    "Como cancelo o Premium?",
+    "Como baixo músicas para ouvir offline?",
+    "Como mudo meu endereço de e-mail?",
+]
 
 # ============================================
 # HEADER
 # ============================================
 
-col1, col2, col3 = st.columns([1, 3, 1])
-with col2:
-    st.markdown('<p class="main-title" style="text-align: center;">🎵 Spotify FAQ Chatbot</p>', 
-                unsafe_allow_html=True)
-    st.markdown('<p class="main-subtitle" style="text-align: center;">Pergunte sobre o Spotify e receba respostas baseadas em FAQs oficiais</p>', 
-                unsafe_allow_html=True)
-
-st.markdown("---")
+st.markdown(
+    '<div class="app-header">'
+    '<p class="app-title">Assistente da Central de Ajuda do Spotify</p>'
+    '<p class="app-subtitle">Responde com base apenas nos artigos oficiais da '
+    'Central de Ajuda e mostra de quais artigos tirou cada resposta.</p>'
+    '</div>',
+    unsafe_allow_html=True,
+)
 
 # ============================================
 # SIDEBAR
@@ -113,37 +191,33 @@ config = render_sidebar(st.session_state.api_client)
 # ÁREA PRINCIPAL - CHAT
 # ============================================
 
-# Container para mensagens
-chat_container = st.container()
+for message in st.session_state.messages:
+    display_message(message)
 
-# Exibe mensagens existentes
-with chat_container:
-    for message in st.session_state.messages:
-        display_message(message)
+# Perguntas de exemplo enquanto a conversa está vazia
+pergunta_exemplo = None
+if not st.session_state.messages:
+    st.caption("Exemplos de perguntas")
+    for exemplo in EXEMPLOS:
+        if st.button(exemplo, use_container_width=True):
+            pergunta_exemplo = exemplo
 
 # ============================================
 # INPUT DO USUÁRIO
 # ============================================
 
-# Input no final da página
 prompt = st.chat_input(
-    "Digite sua pergunta sobre o Spotify...",
+    "Escreva sua pergunta sobre o Spotify",
     key="chat_input",
     disabled=not st.session_state.api_client.health_check()[0]
 )
 
-# Processa a entrada
+prompt = prompt or pergunta_exemplo
 if prompt:
     st.session_state.messages = handle_user_input(
         prompt,
         st.session_state.api_client,
-        st.session_state.messages
+        st.session_state.messages,
+        top_k=config["top_k"],
     )
     st.rerun()
-
-# ============================================
-# RODAPÉ
-# ============================================
-
-st.markdown("---")
-st.caption("🔒 Todas as perguntas são processadas localmente usando Ollama • Dados não são enviados para a nuvem")

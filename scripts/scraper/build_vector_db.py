@@ -47,19 +47,19 @@ def main():
 
     manager = VectorStoreManager(reset_on_init=True)  # evita o lock que você teve antes
 
-    print(f"📂 Carregando .md de {MARKDOWN_DIR}...")
+    print(f"Carregando .md de {MARKDOWN_DIR}...")
     documents = load_markdown_documents(MARKDOWN_DIR)
     print(f"   {len(documents)} artigos carregados")
 
-    print("✂️ Dividindo em chunks...")
+    print("Dividindo em chunks...")
     chunks = manager.process_documents(documents)
 
-    print("💾 Salvando no ChromaDB...")
+    print("Salvando no ChromaDB...")
     manager.create_vector_store(chunks)
 
     stats = manager.get_stats()
-    print(f"\n📊 Total de chunks: {stats['total_documents']}")
-    print("\n✅ CONCLUÍDO!")
+    print(f"\nTotal de chunks: {stats['total_documents']}")
+    print("\nConcluído.")
 
 
 if __name__ == "__main__":

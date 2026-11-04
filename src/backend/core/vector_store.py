@@ -8,7 +8,7 @@ import logging
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-# ✅ IMPORTS CORRETOS DO LANGCHAIN
+# IMPORTS CORRETOS DO LANGCHAIN
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.document_loaders import TextLoader
@@ -27,23 +27,28 @@ class VectorStoreManager:
     def __init__(
         self,
         persist_directory: str = "data/chroma_db",
-        embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
-        chunk_size: int = 700,
-        chunk_overlap: int = 70,
+        # Os artigos e as perguntas são em português. O all-MiniLM-L6-v2
+        # (usado antes) só foi treinado em inglês e trazia artigos de
+        # pagamento para perguntas sobre download offline.
+        embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        # Esse modelo lê no máximo 128 tokens; com 700 caracteres o fim de
+        # cada chunk ficava fora do embedding.
+        chunk_size: int = 500,
+        chunk_overlap: int = 50,
         reset_on_init: bool = False
     ):
         self.persist_directory = persist_directory
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
 
-        # ✅ Embeddings via LangChain
+        # Embeddings via LangChain
         self.embeddings = HuggingFaceEmbeddings(
             model_name=embedding_model,
             model_kwargs={'device': 'cpu'},
             encode_kwargs={'normalize_embeddings': True}
         )
 
-        # ✅ Text Splitter via LangChain
+        # Text Splitter via LangChain
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
@@ -59,7 +64,7 @@ class VectorStoreManager:
             ]
         )
 
-        # ✅ Vector Store via LangChain
+        # Vector Store via LangChain
         self.vector_store = None
 
         # Carrega ou cria vector store
@@ -110,6 +115,13 @@ class VectorStoreManager:
             chunk.metadata.setdefault("url", "")
             chunk.metadata.setdefault("category", "")
             chunk.metadata.setdefault("source", "")
+
+            # Chunks do meio do artigo não têm o título; sem ele, um trecho
+            # como "Acesse Gerenciar seu plano" não diz de qual assunto é,
+            # nem para a busca nem para o LLM.
+            title = chunk.metadata.get("title", "")
+            if title and not chunk.page_content.startswith(f"# {title}"):
+                chunk.page_content = f"# {title}\n{chunk.page_content}"
 
         logger.info(f"Divididos {len(documents)} documentos em {len(chunks)} chunks")
         return chunks

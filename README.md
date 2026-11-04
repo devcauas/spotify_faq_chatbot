@@ -68,7 +68,7 @@ Todo o processamento ocorre localmente, sem utilização de APIs pagas.
 ## Inteligência Artificial
 
 - llama3.2
-- sentence-transformers/all-MiniLM-L6-v2
+- sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 
 ---
 
@@ -263,7 +263,6 @@ Os scripts de scraping usam dependências próprias, que não fazem parte do `re
 
 ```bash
 pip install -r requirements_scraper.txt
-playwright install chromium
 ```
 
 ## 1. Extrair os links das FAQs
@@ -272,7 +271,7 @@ playwright install chromium
 python scripts/scraper/extract_links.py
 ```
 
-Este script acessa a categoria da Central de Ajuda do Spotify e gera uma lista contendo os artigos que serão utilizados.
+Este script parte da página inicial da Central de Ajuda do Spotify e segue os links entre artigos até reunir `MAX_ARTICLES` (300) artigos de todas as categorias. O HTML de cada página fica em cache em `data/raw/html/`, para a etapa seguinte não precisar baixar de novo. Há uma pausa de 3 segundos entre as requisições: com intervalos menores, o site devolve erro 429 e bloqueia o IP por alguns minutos.
 
 ---
 
@@ -404,9 +403,10 @@ As FAQs utilizadas pelo chatbot são obtidas automaticamente a partir da Central
 
 O scraper realiza as seguintes etapas:
 
-- navega pelas categorias desejadas;
-- extrai os links dos artigos;
-- converte cada página para Markdown;
+- parte da página inicial e segue os links entre artigos;
+- baixa cada página com uma requisição HTTP simples (a Central de Ajuda é renderizada no servidor);
+- guarda só o corpo do artigo, descartando "Artigos relacionados" e o menu da categoria;
+- converte listas de passos e tabelas para Markdown;
 - preserva títulos e estrutura dos documentos;
 - prepara os arquivos para indexação no banco vetorial.
 
@@ -418,13 +418,13 @@ Isso facilita futuras atualizações da base de conhecimento, bastando executar 
 
 O pipeline de Retrieval-Augmented Generation segue as etapas abaixo:
 
-1. Divisão dos documentos utilizando `RecursiveCharacterTextSplitter`;
-2. Geração de embeddings com `all-MiniLM-L6-v2`;
+1. Divisão dos documentos utilizando `RecursiveCharacterTextSplitter` (chunks de 500 caracteres, cada um com o título do artigo);
+2. Geração de embeddings com `paraphrase-multilingual-MiniLM-L12-v2`, que entende português;
 3. Armazenamento dos vetores no ChromaDB;
-4. Busca semântica por similaridade;
-5. Recuperação dos documentos mais relevantes (Top-K);
-6. Construção do contexto enviado ao modelo;
-7. Geração da resposta utilizando o Llama 3.2.
+4. Busca semântica por similaridade; abaixo de 0,4 o sistema responde que não encontrou, sem chamar o modelo;
+5. Os chunks encontrados indicam os artigos mais relevantes (no máximo 2);
+6. O contexto enviado ao modelo é o texto completo desses artigos, não fragmentos soltos;
+7. Geração da resposta utilizando o Llama 3.2, com temperatura 0,1 e um prompt que proíbe passos e nomes de menu que não estejam no artigo.
 
 Todo o conhecimento utilizado pelo modelo provém exclusivamente dos documentos indexados.
 
@@ -451,7 +451,7 @@ Fonte:
 https://support.spotify.com/br-pt/article/cancel-premium/
 ```
 
-> A base de conhecimento atual cobre a categoria **Pagamentos** da Central de Ajuda (planos, formas de pagamento, cancelamento, cartões-presente, reajustes de preço etc.). Perguntas fora desse escopo recebem uma resposta de fallback informando que a informação não foi encontrada.
+> A base de conhecimento atual tem **211 artigos** da Central de Ajuda, de todas as categorias que a coleta alcança a partir da página inicial (conta e login, planos, pagamentos, download offline, dispositivos, privacidade etc.). Perguntas fora desse escopo recebem uma resposta de fallback informando que a informação não foi encontrada.
 
 ---
 
@@ -475,7 +475,6 @@ https://support.spotify.com/br-pt/article/cancel-premium/
 - Streaming das respostas
 - Cache de embeddings
 - Atualização incremental da base vetorial
-- Suporte a múltiplas categorias da Central de Ajuda do Spotify
 - Avaliação automática do RAG com Ragas
 - Observabilidade utilizando LangSmith
 - Testes unitários e de integração

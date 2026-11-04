@@ -42,3 +42,5 @@ Thumbs.db
 
 # Ollama
 ollama/
+# Cache do HTML baixado pelo scraper
+data/raw/html/

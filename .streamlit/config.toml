@@ -1,0 +1,15 @@
+[theme]
+# Verde escuro em vez do verde neon padrão (#1DB954), sobre fundo creme
+base = "light"
+primaryColor = "#1F6B4F"
+backgroundColor = "#FAF8F3"
+secondaryBackgroundColor = "#EAF1EC"
+textColor = "#1C2321"
+font = "sans serif"
+
+[client]
+# Esconde o botão "Deploy" e o menu de desenvolvedor do cabeçalho
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
